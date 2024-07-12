@@ -15,6 +15,8 @@ use std::io::stdout;
 
 use reqwest;
 
+use tokio;
+
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
@@ -24,7 +26,8 @@ struct Args {
     // Obviously there could be all sorts of things we do here
 }
 
-fn main() -> std::io::Result<()> {
+#[tokio::main]
+async fn main() -> std::io::Result<()> {
     let args = Args::parse();
 
     stdout().execute(EnterAlternateScreen)?;
@@ -32,7 +35,7 @@ fn main() -> std::io::Result<()> {
     let mut terminal = Terminal::new(CrosstermBackend::new(stdout()))?;
     terminal.clear()?;
 
-    let prelude = "I'm going to be following the match with id";
+    let prelude = "I'm going to be following the match with id:";
     let mut text = format!("{prelude}{}", args.match_id);
 
     // main loop
@@ -50,7 +53,15 @@ fn main() -> std::io::Result<()> {
                     match key.code {
                         KeyCode::Char('q') => break,
                         KeyCode::Char('a') => {
-                            text = format!("{prelude}{}\nBut also, hooray!", args.match_id);
+                            let windies_snippet = get_windies_match().await;
+                            match windies_snippet {
+                                Ok(snippet) => {
+                                    text = format!("{prelude}{}\n{}", args.match_id, snippet);
+                                }
+                                Err(e) => {
+                                    text = format!("{prelude}{}\n!{:?}", args.match_id, e);
+                                }
+                            }
                         }
                         _ => {}
                     }
@@ -64,11 +75,17 @@ fn main() -> std::io::Result<()> {
     Ok(())
 }
 
-async fn get_windies_match() -> Result<(), reqwest::Error> {
+async fn get_windies_match() -> Result<String, reqwest::Error> {
     let body = reqwest::get("https://www.espncricinfo.com/matches/engine/match/1385691.json")
         .await?
         .text()
         .await?;
-    println!("the body: {}", &body[..255]);
-    Ok(())
+
+    let snippet: String = body
+        .char_indices()
+        .take_while(|(i, _)| *i < 25)
+        .map(|(_, c)| c)
+        .collect();
+
+    return Ok(snippet);
 }
