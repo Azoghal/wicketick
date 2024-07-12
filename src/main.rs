@@ -1,4 +1,5 @@
 use clap::Parser;
+use cricinfo::get_match_summary;
 use ratatui::{
     backend::CrosstermBackend,
     crossterm::{
@@ -10,13 +11,15 @@ use ratatui::{
     widgets::Paragraph,
     Terminal,
 };
-use reqwest;
-use serde::Deserialize;
+
 use std::io::stdout;
 use tokio;
 
 pub mod errors;
 use errors::Error;
+
+pub mod cricinfo;
+pub mod wicketick;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -28,7 +31,7 @@ struct Args {
 }
 
 #[tokio::main]
-async fn main() -> std::io::Result<()> {
+async fn main() -> Result<(), Error> {
     let args = Args::parse();
 
     stdout().execute(EnterAlternateScreen)?;
@@ -36,20 +39,12 @@ async fn main() -> std::io::Result<()> {
     let mut terminal = Terminal::new(CrosstermBackend::new(stdout()))?;
     terminal.clear()?;
 
-    let prelude = "I'm going to be following the match with id:";
-    let mut text = format!("{prelude}{}", args.match_id);
-
     // TODO it's a shame that this blocks the main loop from starting till it's fetched
-    let match_summary = get_match_summary(args.match_id).await;
-    match match_summary {
-        Ok(summary) => {
-            let runs = summary.live.innings.runs;
-            let wickets = summary.live.innings.wickets;
-            // TODO easier if we give the struct the display methods
-            text = format!("{} - {}", runs, wickets);
-        }
-        Err(e) => {}
-    }
+    let Ok(match_summary) = get_match_summary(args.match_id).await else {
+        return Err(Error::Todo("Failed to get match summary".to_string()));
+    };
+
+    let text = match_summary.display();
 
     // main loop
     loop {
@@ -75,39 +70,4 @@ async fn main() -> std::io::Result<()> {
     stdout().execute(LeaveAlternateScreen)?;
     disable_raw_mode()?;
     Ok(())
-}
-
-// example match ids:
-// finished test match = 1385691
-// currently in progress t20 = 1410472
-async fn get_match_summary(match_id: String) -> Result<EspnCricInfoMatchSummary, Error> {
-    let body = reqwest::get(format!(
-        "https://www.espncricinfo.com/matches/engine/match/{}.json",
-        match_id
-    ))
-    .await?
-    .text()
-    .await?;
-
-    let match_summary: EspnCricInfoMatchSummary = serde_json::from_str(&body)?;
-
-    return Ok(match_summary);
-}
-
-// A proof of concept espn cricinfo struct
-#[derive(Deserialize, Debug)]
-struct EspnCricInfoMatchSummary {
-    live: EspnCricInfoLive,
-}
-
-#[derive(Deserialize, Debug)]
-struct EspnCricInfoLive {
-    innings: EspnCricInfoInnings,
-}
-
-#[derive(Deserialize, Debug)]
-struct EspnCricInfoInnings {
-    runs: i32,
-    wickets: i32,
-    target: Option<i32>,
 }
