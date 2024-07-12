@@ -1,5 +1,4 @@
 use clap::Parser;
-
 use ratatui::{
     backend::CrosstermBackend,
     crossterm::{
@@ -11,10 +10,10 @@ use ratatui::{
     widgets::Paragraph,
     Terminal,
 };
-use std::io::stdout;
-
 use reqwest;
-
+use serde::Deserialize;
+use std::io::stdout;
+use thiserror::Error;
 use tokio;
 
 #[derive(Parser, Debug)]
@@ -38,6 +37,18 @@ async fn main() -> std::io::Result<()> {
     let prelude = "I'm going to be following the match with id:";
     let mut text = format!("{prelude}{}", args.match_id);
 
+    // TODO it's a shame that this blocks the main loop from starting till it's fetched
+    let match_summary = get_match_summary(args.match_id).await;
+    match match_summary {
+        Ok(summary) => {
+            let runs = summary.live.innings.runs;
+            let wickets = summary.live.innings.wickets;
+            // TODO easier if we give the struct the display methods
+            text = format!("{} - {}", runs, wickets);
+        }
+        Err(e) => {}
+    }
+
     // main loop
     loop {
         // Draw
@@ -52,17 +63,6 @@ async fn main() -> std::io::Result<()> {
                 if key.kind == KeyEventKind::Press {
                     match key.code {
                         KeyCode::Char('q') => break,
-                        KeyCode::Char('a') => {
-                            let windies_snippet = get_windies_match().await;
-                            match windies_snippet {
-                                Ok(snippet) => {
-                                    text = format!("{prelude}{}\n{}", args.match_id, snippet);
-                                }
-                                Err(e) => {
-                                    text = format!("{prelude}{}\n!{:?}", args.match_id, e);
-                                }
-                            }
-                        }
                         _ => {}
                     }
                 }
@@ -75,17 +75,60 @@ async fn main() -> std::io::Result<()> {
     Ok(())
 }
 
-async fn get_windies_match() -> Result<String, reqwest::Error> {
-    let body = reqwest::get("https://www.espncricinfo.com/matches/engine/match/1385691.json")
-        .await?
-        .text()
-        .await?;
+// example match ids:
+// finished test match = 1385691
+async fn get_match_summary(match_id: String) -> Result<EspnCricInfoMatchSummary, Error> {
+    let body = reqwest::get(format!(
+        "https://www.espncricinfo.com/matches/engine/match/{}.json",
+        match_id
+    ))
+    .await?
+    .text()
+    .await?;
 
-    let snippet: String = body
-        .char_indices()
-        .take_while(|(i, _)| *i < 25)
-        .map(|(_, c)| c)
-        .collect();
+    let match_summary: EspnCricInfoMatchSummary = serde_json::from_str(&body)?;
 
-    return Ok(snippet);
+    return Ok(match_summary);
+}
+
+// A proof of concept espn cricinfo struct
+#[derive(Deserialize, Debug)]
+struct EspnCricInfoMatchSummary {
+    live: EspnCricInfoLive,
+}
+
+#[derive(Deserialize, Debug)]
+struct EspnCricInfoLive {
+    innings: EspnCricInfoInnings,
+}
+
+#[derive(Deserialize, Debug)]
+struct EspnCricInfoInnings {
+    runs: i32,
+    wickets: i32,
+    target: Option<i32>,
+}
+
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("io error {source:?}")]
+    IoError {
+        #[from]
+        source: std::io::Error,
+    },
+
+    #[error("serde error {source:?}")]
+    SerdeError {
+        #[from]
+        source: serde_json::Error,
+    },
+
+    #[error("reqwest error {source:?}")]
+    ReqwestError {
+        #[from]
+        source: reqwest::Error,
+    },
+
+    #[error("TODO error")]
+    Todo(String),
 }
