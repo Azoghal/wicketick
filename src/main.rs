@@ -69,6 +69,10 @@ async fn main() -> Result<(), Error> {
     // TODo made a hash of this - handle input needs to be able to call relevant methods on this,
     let mut wicketick = wicketick_setup(args).await?;
 
+    // initialise and draw the screen
+    draw(&wicketick, &mut terminal, state)?;
+    wicketick.refresh().await?;
+
     // main loop
     loop {
         // Draw
@@ -95,6 +99,7 @@ enum TickerState {
 
 async fn handle_input(wicketick: &mut WickeTick, _state: TickerState) -> Result<bool, Error> {
     // TODO pattern match on state if we need different interactions
+    // TODO should long input handling functinos like refreshing, block this?
     let mut should_break = false;
     if event::poll(std::time::Duration::from_millis(16))? {
         if let event::Event::Key(key) = event::read()? {
