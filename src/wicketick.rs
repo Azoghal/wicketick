@@ -1,4 +1,8 @@
+use std::sync::Arc;
 use std::time;
+
+use tokio::sync::Mutex;
+use tokio::time::{sleep, Duration};
 
 use crate::cricinfo;
 use crate::errors::Error;
@@ -8,10 +12,26 @@ pub enum Source {
     Cricinfo { match_id: String },
 }
 
+#[derive(Clone)]
 pub struct WickeTick {
     pub source: Source,
     pub summary: Option<SimpleSummary>,
     pub last_refresh: Option<time::Instant>,
+    pub poll_interval: Option<time::Duration>,
+}
+
+pub async fn poll_wicketick(wicketick: Arc<Mutex<WickeTick>>, interval: Duration) {
+    loop {
+        {
+            let mut locked_wicketick = wicketick.lock().await;
+            let res = locked_wicketick.refresh().await;
+            if let Err(err) = res {
+                // TODO proper logging, or somewhere to display it in the canvas
+                println!("failed to poll: {}", err)
+            }
+        }
+        sleep(interval).await;
+    }
 }
 
 impl WickeTick {
@@ -28,6 +48,7 @@ impl WickeTick {
 }
 
 // Simple summary just stores one innings, for now
+#[derive(Clone)]
 pub struct SimpleSummary {
     pub current_innings: Innings,
 }
@@ -38,6 +59,7 @@ impl SimpleSummary {
     }
 }
 
+#[derive(Clone)]
 pub struct Innings {
     pub runs: i32,
     pub wickets: i32,

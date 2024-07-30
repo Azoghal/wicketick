@@ -11,13 +11,14 @@ use ratatui::{
     widgets::Paragraph,
     Terminal,
 };
-use wicketick::WickeTick;
+use wicketick::{poll_wicketick, WickeTick};
 
 use std::{
     io::{stdout, Stdout},
-    time,
+    sync::Arc,
+    time::Duration,
 };
-use tokio;
+use tokio::sync::Mutex;
 
 pub mod errors;
 use errors::Error;
@@ -31,6 +32,10 @@ struct Args {
     // Id of match to display
     #[arg(short, long)]
     match_id: String,
+
+    // polling interval in seconds
+    #[arg(short, long)]
+    time_interval: u64,
     // Obviously there could be all sorts of things we do here
 }
 
@@ -54,6 +59,7 @@ async fn wicketick_setup(args: Args) -> Result<WickeTick, Error> {
         },
         summary: None,
         last_refresh: None,
+        poll_interval: Some(Duration::from_secs(args.time_interval)),
     })
 }
 
@@ -68,13 +74,23 @@ async fn main() -> Result<(), Error> {
 
     // TODo made a hash of this - handle input needs to be able to call relevant methods on this,
     let mut wicketick = wicketick_setup(args).await?;
+    let wicketick_copy = Arc::new(Mutex::new(wicketick.clone()));
 
-    // initialise and draw the screen
+    // initialise, block on any necessary setup
     draw(&wicketick, &mut terminal, state)?;
-    wicketick.refresh().await?;
+
+    if let Some(interval) = wicketick.poll_interval {
+        let data_clone = Arc::clone(&wicketick_copy);
+        // TODO some way to kill thread when needed
+        tokio::spawn(poll_wicketick(data_clone, interval));
+    }
 
     // main loop
     loop {
+        // Update if we've polled
+        // TODO check for diff or something
+        handle_poll(&mut wicketick, &wicketick_copy).await;
+
         // Draw
         draw(&wicketick, &mut terminal, state)?;
 
@@ -95,6 +111,15 @@ enum TickerState {
     _MatchSelect,
     MinimalTicker,
     _RelaxedTicker(Rect),
+}
+
+async fn handle_poll(wicketick: &mut WickeTick, wicketick_copy: &Arc<Mutex<WickeTick>>) {
+    if let Some(_) = wicketick.poll_interval {
+        let locked = wicketick_copy.lock().await;
+        if let Some(summary) = locked.summary.clone() {
+            wicketick.summary = Some(summary);
+        }
+    }
 }
 
 async fn handle_input(wicketick: &mut WickeTick, _state: TickerState) -> Result<bool, Error> {
