@@ -43,7 +43,7 @@ struct Innings {
     overs: String,
 }
 
-// TODO impl into wicketick::summary
+struct Team {}
 
 impl Summary {
     pub fn into(self) -> wicketick::SimpleSummary {

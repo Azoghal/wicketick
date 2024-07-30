@@ -1,5 +1,4 @@
 use clap::Parser;
-use cricinfo::get_match_summary;
 use ratatui::{
     backend::CrosstermBackend,
     crossterm::{
@@ -12,9 +11,12 @@ use ratatui::{
     widgets::Paragraph,
     Terminal,
 };
-use wicketick::SimpleSummary;
+use wicketick::WickeTick;
 
-use std::io::{stdout, Stdout};
+use std::{
+    io::{stdout, Stdout},
+    time,
+};
 use tokio;
 
 pub mod errors;
@@ -44,12 +46,15 @@ fn terminal_teardown() -> Result<(), Error> {
     Ok(())
 }
 
-async fn wicketick_setup(args: Args) -> Result<SimpleSummary, Error> {
+async fn wicketick_setup(args: Args) -> Result<WickeTick, Error> {
     // TODO it's a shame that this blocks the main loop from starting till it's fetched
-    let Ok(match_summary) = get_match_summary(args.match_id).await else {
-        return Err(Error::Todo("Failed to get match summary".to_string()));
-    };
-    Ok(match_summary)
+    Ok(WickeTick {
+        source: wicketick::Source::Cricinfo {
+            match_id: args.match_id,
+        },
+        summary: None,
+        last_refresh: None,
+    })
 }
 
 #[tokio::main]
@@ -61,15 +66,16 @@ async fn main() -> Result<(), Error> {
     let mut terminal = Terminal::new(CrosstermBackend::new(stdout()))?;
     terminal.clear()?;
 
-    let match_summary = wicketick_setup(args).await?;
+    // TODo made a hash of this - handle input needs to be able to call relevant methods on this,
+    let mut wicketick = wicketick_setup(args).await?;
 
     // main loop
     loop {
         // Draw
-        draw(&match_summary, &mut terminal, state)?;
+        draw(&wicketick, &mut terminal, state)?;
 
         // Handle input
-        let should_break = handle_input(state)?;
+        let should_break = handle_input(&mut wicketick, state).await?;
         if should_break {
             break;
         }
@@ -87,7 +93,7 @@ enum TickerState {
     _RelaxedTicker(Rect),
 }
 
-fn handle_input(_state: TickerState) -> Result<bool, Error> {
+async fn handle_input(wicketick: &mut WickeTick, _state: TickerState) -> Result<bool, Error> {
     // TODO pattern match on state if we need different interactions
     let mut should_break = false;
     if event::poll(std::time::Duration::from_millis(16))? {
@@ -95,6 +101,7 @@ fn handle_input(_state: TickerState) -> Result<bool, Error> {
             if key.kind == KeyEventKind::Press {
                 match key.code {
                     KeyCode::Char('q') => should_break = true,
+                    KeyCode::Char('r') => wicketick.refresh().await?,
                     _ => {}
                 }
             }
@@ -104,7 +111,7 @@ fn handle_input(_state: TickerState) -> Result<bool, Error> {
 }
 
 fn draw(
-    ref match_summary: &SimpleSummary,
+    wicketick: &WickeTick,
     terminal: &mut Terminal<CrosstermBackend<Stdout>>,
     state: TickerState,
 ) -> Result<(), Error> {
@@ -115,8 +122,12 @@ fn draw(
             .white()
             .on_green(),
         TickerState::MinimalTicker => {
-            let text = match_summary.display();
-            Paragraph::new(text.clone()).white().on_black()
+            if let Some(summary) = &wicketick.summary {
+                let text = summary.display();
+                Paragraph::new(text.clone()).white().on_black()
+            } else {
+                Paragraph::new("Loading...").white().on_black()
+            }
         }
         TickerState::_RelaxedTicker(_size) => Paragraph::new("Relaxed ticker not implemented")
             .white()
