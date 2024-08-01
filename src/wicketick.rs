@@ -1,5 +1,5 @@
 use std::sync::Arc;
-use std::time;
+use std::{fmt, time};
 
 use tokio::sync::Mutex;
 use tokio::time::{sleep, Duration};
@@ -9,8 +9,30 @@ use crate::errors::Error;
 
 #[derive(Clone)]
 pub enum Source {
-    Cricinfo { match_id: String },
+    Cricinfo { match_id: Option<String> },
+    _SomeApi { base_url: String, api_token: String },
 }
+
+impl fmt::Display for Source {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Source::Cricinfo { match_id } => write!(f, "CricInfo(match_id:{:?})", match_id),
+            Source::_SomeApi {
+                base_url,
+                api_token,
+            } => write!(f, "_SomeApi"),
+        }
+    }
+}
+
+// TODO really we need a trait for all the things we need to do with a
+// impl Source {
+//     fn should_poll(self) -> bool {
+//         match cricinfo {}
+//     }
+// }
+
+static DEFAULT_POLL_INTERVAL: time::Duration = time::Duration::from_secs(30);
 
 #[derive(Clone)]
 pub struct WickeTick {
@@ -35,11 +57,30 @@ pub async fn poll_wicketick(wicketick: Arc<Mutex<WickeTick>>, interval: Duration
 }
 
 impl WickeTick {
+    pub fn new(source: Source, poll_interval: Option<time::Duration>) -> Self {
+        let poll_t = match poll_interval {
+            Some(t) => t,
+            None => DEFAULT_POLL_INTERVAL,
+        };
+        return Self {
+            source,
+            summary: None,
+            last_refresh: None,
+            poll_interval: Some(poll_t),
+        };
+    }
+
     pub async fn refresh(&mut self) -> Result<(), Error> {
         match self.source.clone() {
-            Source::Cricinfo { match_id } => {
+            Source::Cricinfo {
+                match_id: Some(m_id),
+            } => {
                 self.last_refresh = Some(time::Instant::now());
-                self.summary = Some(cricinfo::get_match_summary(match_id).await?);
+                self.summary = Some(cricinfo::get_match_summary(m_id).await?);
+                Ok(())
+            }
+            Source::Cricinfo { match_id: None } => {
+                // Nothing to refresh
                 Ok(())
             }
             _ => Err(Error::Todo("not implemented".to_string())),
