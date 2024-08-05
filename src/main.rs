@@ -11,7 +11,7 @@ use ratatui::{
     widgets::Paragraph,
     Terminal,
 };
-use wicketick::{poll_wicketick, Source, WickeTick};
+use wicketick::{poll_wicketick, Source, WickeTick, DEFAULT_POLL_INTERVAL};
 
 use std::{
     io::{stdout, Stdout},
@@ -32,7 +32,7 @@ pub mod wicketick;
 struct Args {
     // Id of match to display
     #[command(subcommand)]
-    source: CliSources,
+    source: Option<CliSources>,
 
     // polling interval in seconds
     #[arg(short, long, default_value_t = 30)]
@@ -62,16 +62,29 @@ fn terminal_teardown() -> Result<(), Error> {
 }
 
 // TODO this needs to be called at the right time, rather than when parsing args
-async fn wicketick_setup(args: Args) -> Result<WickeTick, Error> {
+fn phase_from_args(args: Args) -> Result<TickerPhase, Error> {
     // TODO it's a shame that this blocks the main loop from starting till it's fetched
     match args.source {
-        CliSources::Cricinfo { match_id } => Ok(WickeTick {
-            source: wicketick::Source::Cricinfo { match_id: match_id },
-            summary: None,
-            last_refresh: None,
-            poll_interval: Some(Duration::from_secs(args.time_interval)),
-        }),
-        _ => Err(errors::Error::Todo("not sure".to_string())),
+        Some(source) => match source {
+            CliSources::Cricinfo { match_id } => match match_id {
+                Some(_) => {
+                    let w = WickeTick {
+                        source: wicketick::Source::Cricinfo { match_id: match_id },
+                        summary: None,
+                        last_refresh: None,
+                        poll_interval: Some(Duration::from_secs(args.time_interval)),
+                    };
+                    let w_c = Arc::new(Mutex::new(w.clone()));
+                    let config = TickerConfiguration::MinimalTicker;
+                    Ok(TickerPhase::Display(w, w_c, config))
+                }
+                None => Ok(TickerPhase::MatchSelect(wicketick::Source::Cricinfo {
+                    match_id: None,
+                })),
+            },
+            _ => Err(errors::Error::Todo("not sure".to_string())),
+        },
+        None => Ok(TickerPhase::SourceSelect),
     }
 }
 
@@ -79,7 +92,7 @@ async fn wicketick_setup(args: Args) -> Result<WickeTick, Error> {
 async fn main() -> Result<(), Error> {
     let args = Args::parse();
     let mut state = TickerState {
-        phase: TickerPhase::SourceSelect,
+        phase: phase_from_args(args)?,
     };
 
     // We can skip certain phases depending on the args given
@@ -92,31 +105,18 @@ async fn main() -> Result<(), Error> {
     terminal.clear()?;
 
     // initialise, block on any necessary setup
-    draw(&mut terminal, &state)?;
-
-    // TODO only start this when we move to display
-
-    // TODo made a hash of this - handle input needs to be able to call relevant methods on this,
-    let mut wicketick = wicketick_setup(args).await?;
-    let wicketick_copy = Arc::new(Mutex::new(wicketick.clone()));
-
-    if let Some(interval) = wicketick.poll_interval {
-        let data_clone = Arc::clone(&wicketick_copy);
-        // TODO some way to kill thread when needed
-        tokio::spawn(poll_wicketick(data_clone, interval));
-    }
+    draw(&mut terminal, &state).await?;
 
     // main loop
     // TODO I think these main loop things (draw, handle input) should be handled by the phase of the state
     // state.phase.draw()
     // state.phase.handle_input()
     loop {
-        // Update if we've polled
-        // TODO check for diff or something
-        handle_poll(&mut wicketick, &wicketick_copy).await;
+        // Update
+        update(&mut state).await?;
 
         // Draw
-        draw(&mut terminal, &state)?;
+        draw(&mut terminal, &state).await?;
 
         // Handle input
         let should_break = handle_input(&mut state).await?;
@@ -140,7 +140,8 @@ struct TickerState {
 enum TickerPhase {
     SourceSelect,
     MatchSelect(Source),
-    Display(WickeTick, TickerConfiguration),
+    // TODO probably reduce to just one?
+    Display(WickeTick, Arc<Mutex<WickeTick>>, TickerConfiguration),
 }
 
 // Used to mux the way we lay the summary out in the terminal
@@ -182,17 +183,26 @@ async fn handle_input(state: &mut TickerState) -> Result<bool, Error> {
                     KeyCode::Char('1') => {
                         // TODO un hardcode this
                         let new_source = &mut Source::Cricinfo {
-                            match_id: Some("1417800".to_string()),
+                            match_id: Some("1443995".to_string()),
                         };
+                        // TODO separate this out
                         let wicketick = WickeTick::new(new_source.clone(), None);
+                        let interval = wicketick.clone().poll_interval;
                         let configuration = TickerConfiguration::MinimalTicker;
-                        state.phase = TickerPhase::Display(wicketick, configuration)
+                        let wicketick_copy = Arc::new(Mutex::new(wicketick.clone()));
+                        if let Some(int) = interval {
+                            let data_clone = Arc::clone(&wicketick_copy);
+                            // TODO some way to kill thread when needed? let (tx, mut rx) = mpsc::channel(1);
+                            tokio::spawn(poll_wicketick(data_clone, int));
+                        }
+                        state.phase =
+                            TickerPhase::Display(wicketick, wicketick_copy, configuration);
                     }
                     _ => {}
                 }
             }
         }
-        TickerPhase::Display(wicketick, configuration) => {
+        TickerPhase::Display(wicketick, wicketick_copy, configuration) => {
             if let Some(key) = input_key_press().await? {
                 match key {
                     KeyCode::Char('q') => should_break = true,
@@ -216,7 +226,29 @@ async fn input_key_press() -> Result<Option<KeyCode>, Error> {
     Ok(None)
 }
 
-fn draw(
+async fn update(state: &mut TickerState) -> Result<(), Error> {
+    // calculate what we want to display
+    // TODO think if there's a nicer way
+    let widget = match &mut state.phase {
+        TickerPhase::SourceSelect => {}
+        TickerPhase::MatchSelect(source) => match source {
+            Source::Cricinfo { match_id } => {}
+            Source::_SomeApi {
+                base_url,
+                api_token,
+            } => {}
+        },
+        TickerPhase::Display(wicketick, wicketick_copy, configuration) => match configuration {
+            TickerConfiguration::MinimalTicker => {
+                handle_poll(wicketick, wicketick_copy).await;
+            }
+            TickerConfiguration::_RelaxedTicker(_size) => {}
+        },
+    };
+    Ok(())
+}
+
+async fn draw(
     terminal: &mut Terminal<CrosstermBackend<Stdout>>,
     state: &TickerState,
 ) -> Result<(), Error> {
@@ -237,7 +269,7 @@ fn draw(
                 .white()
                 .on_green(),
         },
-        TickerPhase::Display(wicketick, configuration) => match configuration {
+        TickerPhase::Display(wicketick, _, configuration) => match configuration {
             TickerConfiguration::MinimalTicker => {
                 if let Some(summary) = &wicketick.summary {
                     let text = summary.display();

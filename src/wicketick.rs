@@ -32,7 +32,7 @@ impl fmt::Display for Source {
 //     }
 // }
 
-static DEFAULT_POLL_INTERVAL: time::Duration = time::Duration::from_secs(30);
+pub static DEFAULT_POLL_INTERVAL: time::Duration = time::Duration::from_secs(30);
 
 #[derive(Clone)]
 pub struct WickeTick {
@@ -82,6 +82,19 @@ impl WickeTick {
             Source::Cricinfo { match_id: None } => {
                 // Nothing to refresh
                 Ok(())
+            }
+            _ => Err(Error::Todo("not implemented".to_string())),
+        }
+    }
+
+    pub async fn refetch(self) -> Result<SimpleSummary, Error> {
+        match self.source.clone() {
+            Source::Cricinfo {
+                match_id: Some(m_id),
+            } => cricinfo::get_match_summary(m_id).await,
+            Source::Cricinfo { match_id: None } => {
+                // Nothing to refresh
+                Err(Error::Todo("no match id".to_string()))
             }
             _ => Err(Error::Todo("not implemented".to_string())),
         }
