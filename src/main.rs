@@ -80,7 +80,6 @@ fn phase_from_args<'a>(args: Args) -> Result<TickerPhase, Error> {
                 }
                 None => Ok(TickerPhase::MatchSelect(MatchSelect {
                     source: wicketick::Source::Cricinfo { match_id: None },
-                    should_close: false,
                 })),
             },
             _ => Err(errors::Error::Todo("not sure".to_string())),
@@ -126,6 +125,49 @@ async fn main() -> Result<(), Error> {
     Ok(())
 }
 
+async fn update(state: &mut TickerState) -> Result<(), Error> {
+    // calculate what we want to display
+    // TODO think if there's a nicer way
+    let Some(phase) = state.phase.as_inner_trait() else {
+        return Err(Error::Todo("update failed to get trait".to_string()));
+    };
+    phase.update()
+}
+
+async fn draw(state: &mut TickerState) -> Result<(), Error> {
+    // calculate what we want to display
+    // TODO think if there's a nicer way
+    let Some(phase) = state.phase.as_inner_trait() else {
+        return Err(Error::Todo("draw failed to get trait".to_string()));
+    };
+    phase.draw(&mut state.terminal)
+}
+
+async fn handle_input(state: &mut TickerState) -> Result<bool, Error> {
+    let Some(phase) = state.phase.as_inner_trait() else {
+        return Err(Error::Todo("handle input failed to get trait".to_string()));
+    };
+
+    let new_phase = phase.handle_input()?;
+
+    match new_phase.phase {
+        Some(phase) => state.phase = phase,
+        None => {}
+    }
+
+    return Ok(new_phase.should_close);
+}
+
+fn input_key_press() -> Result<Option<KeyCode>, Error> {
+    if event::poll(std::time::Duration::from_millis(16))? {
+        if let event::Event::Key(key) = event::read()? {
+            if key.kind == KeyEventKind::Press {
+                return Ok(Some(key.code));
+            }
+        }
+    }
+    Ok(None)
+}
 // If we need to know things for each of these states, we can add it
 struct TickerState {
     terminal: ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
@@ -150,13 +192,6 @@ impl TickerPhase {
     }
 }
 
-// Used to mux the way we lay the summary out in the terminal
-#[derive(Copy, Clone)]
-
-enum TickerConfiguration {
-    MinimalTicker,
-    _RelaxedTicker(Rect),
-}
 // handle poll might also be needed in match select?
 async fn handle_poll(wicketick: &mut WickeTick, wicketick_copy: &Arc<Mutex<WickeTick>>) {
     if let Some(_) = wicketick.poll_interval {
@@ -167,127 +202,30 @@ async fn handle_poll(wicketick: &mut WickeTick, wicketick_copy: &Arc<Mutex<Wicke
     }
 }
 
-async fn handle_input(state: &mut TickerState) -> Result<bool, Error> {
-    let mut should_break = false;
-    match &mut state.phase {
-        TickerPhase::SourceSelect(source_select) => {
-            // make sure this aligns with what is drawn
-            if let Some(key) = input_key_press()? {
-                match key {
-                    KeyCode::Char('1') => {
-                        state.phase = TickerPhase::MatchSelect(MatchSelect::new(Source::Cricinfo {
-                            match_id: None,
-                        }))
-                    }
-                    _ => {}
-                }
-            }
-        }
-        TickerPhase::MatchSelect(source) => {
-            // make sure this aligns with what is drawn
-            // Oh no - here we end up having muxed over the phase, but we also need to mux over the source
-            if let Some(key) = input_key_press()? {
-                match key {
-                    KeyCode::Char('1') => {
-                        // TODO un hardcode this
-                        let new_source = Source::Cricinfo {
-                            match_id: Some("1443995".to_string()),
-                        };
-                        // TODO separate this out
-                        let wicketick = WickeTick::new(new_source.clone(), None);
-                        let interval = wicketick.clone().poll_interval;
-                        let configuration = TickerConfiguration::MinimalTicker;
-                        let wicketick_copy = Arc::new(Mutex::new(wicketick.clone()));
-                        if let Some(int) = interval {
-                            let data_clone = Arc::clone(&wicketick_copy);
-                            // TODO some way to kill thread when needed? let (tx, mut rx) = mpsc::channel(1);
-                            tokio::spawn(poll_wicketick(data_clone, int));
-                        }
-                        state.phase =
-                            TickerPhase::LiveStream(LiveStream::new(new_source, wicketick));
-                    }
-                    _ => {}
-                }
-            }
-        }
-        TickerPhase::LiveStream(live_stream) => {
-            if let Some(key) = input_key_press()? {
-                match key {
-                    KeyCode::Char('q') => should_break = true,
-                    KeyCode::Char('r') => live_stream.wicketick.refresh()?,
-                    _ => {}
-                }
-            }
-        }
-    }
-    return Ok(should_break);
-}
-
-fn input_key_press() -> Result<Option<KeyCode>, Error> {
-    if event::poll(std::time::Duration::from_millis(16))? {
-        if let event::Event::Key(key) = event::read()? {
-            if key.kind == KeyEventKind::Press {
-                return Ok(Some(key.code));
-            }
-        }
-    }
-    Ok(None)
-}
-
-async fn update(state: &mut TickerState) -> Result<(), Error> {
-    // calculate what we want to display
-    // TODO think if there's a nicer way
-    let widget = match &mut state.phase {
-        TickerPhase::SourceSelect(source_select) => {}
-        TickerPhase::MatchSelect(match_select) => match &match_select.source {
-            Source::Cricinfo { match_id } => {}
-            Source::_SomeApi {
-                base_url,
-                api_token,
-            } => {}
-        },
-        TickerPhase::LiveStream(live_stream) => match live_stream.configuration {
-            TickerConfiguration::MinimalTicker => {
-                handle_poll(&mut live_stream.wicketick, &mut live_stream.wicketick_copy).await;
-            }
-            TickerConfiguration::_RelaxedTicker(_size) => {}
-        },
-    };
-    Ok(())
-}
-
-async fn draw(state: &mut TickerState) -> Result<(), Error> {
-    // calculate what we want to display
-    // TODO think if there's a nicer way
-    let Some(phase) = state.phase.as_inner_trait() else {
-        return Err(Error::Todo("boom".to_string()));
-    };
-    phase.draw(&mut state.terminal)
-}
-
 trait TickerPhaseTemp {
-    fn update(self) -> Result<(), Error>;
+    fn update(&mut self) -> Result<(), Error>;
     fn draw(
         &mut self,
         terminal: &mut ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
     ) -> Result<(), Error>;
-    fn handle_input(self) -> Result<Option<TickerPhase>, Error>;
+    fn handle_input(&mut self) -> Result<HandleInputResponse, Error>;
 }
 
-struct SourceSelect {
+struct HandleInputResponse {
     should_close: bool,
+    phase: Option<TickerPhase>,
 }
+
+struct SourceSelect {}
 
 impl SourceSelect {
     fn new() -> Self {
-        SourceSelect {
-            should_close: false,
-        }
+        SourceSelect {}
     }
 }
 
 impl TickerPhaseTemp for SourceSelect {
-    fn update(self) -> Result<(), Error> {
+    fn update(&mut self) -> Result<(), Error> {
         Ok(())
     }
 
@@ -303,31 +241,37 @@ impl TickerPhaseTemp for SourceSelect {
         Ok(())
     }
 
-    fn handle_input(mut self) -> Result<Option<TickerPhase>, Error> {
+    fn handle_input(&mut self) -> Result<HandleInputResponse, Error> {
+        let mut should_close = false;
         if let Some(key) = input_key_press()? {
             match key {
                 KeyCode::Char('q') => {
-                    self.should_close = true;
+                    should_close = true;
                 }
                 KeyCode::Char('1') => {
-                    return Ok(Some(TickerPhase::MatchSelect(MatchSelect::new(
-                        Source::Cricinfo { match_id: None },
-                    ))))
+                    return Ok(HandleInputResponse {
+                        should_close,
+                        phase: Some(TickerPhase::MatchSelect(MatchSelect::new(
+                            Source::Cricinfo { match_id: None },
+                        ))),
+                    })
                 }
                 _ => {}
             }
         }
-        Ok(None)
+        Ok(HandleInputResponse {
+            should_close,
+            phase: None,
+        })
     }
 }
 
 struct MatchSelect {
-    should_close: bool,
     source: Source,
 }
 
 impl TickerPhaseTemp for MatchSelect {
-    fn update(self) -> Result<(), Error> {
+    fn update(&mut self) -> Result<(), Error> {
         Ok(())
     }
 
@@ -355,10 +299,11 @@ impl TickerPhaseTemp for MatchSelect {
         Ok(())
     }
 
-    fn handle_input(mut self) -> Result<Option<TickerPhase>, Error> {
+    fn handle_input(&mut self) -> Result<HandleInputResponse, Error> {
+        let mut should_close = false;
         if let Some(key) = input_key_press()? {
             match key {
-                KeyCode::Char('q') => self.should_close = true,
+                KeyCode::Char('q') => should_close = true,
                 KeyCode::Char('1') => {
                     // TODO un hardcode this
                     let new_source = &mut Source::Cricinfo {
@@ -374,30 +319,39 @@ impl TickerPhaseTemp for MatchSelect {
                         // TODO some way to kill thread when needed? let (tx, mut rx) = mpsc::channel(1);
                         tokio::spawn(poll_wicketick(data_clone, int));
                     }
-                    return Ok(Some(TickerPhase::LiveStream(LiveStream::new(
-                        new_source.clone(),
-                        wicketick,
-                    ))));
+                    return Ok(HandleInputResponse {
+                        should_close,
+                        phase: Some(TickerPhase::LiveStream(LiveStream::new(
+                            new_source.clone(),
+                            wicketick,
+                        ))),
+                    });
                 }
                 _ => {}
             }
         }
-        Ok(None)
+        Ok(HandleInputResponse {
+            should_close,
+            phase: None,
+        })
     }
 }
 
 impl MatchSelect {
     fn new(source: Source) -> Self {
-        Self {
-            should_close: false,
-            source,
-        }
+        Self { source }
     }
+}
+
+// Used to mux the way we lay the summary out in the terminal
+#[derive(Copy, Clone)]
+enum TickerConfiguration {
+    MinimalTicker,
+    _RelaxedTicker(Rect),
 }
 
 // TODO rename
 struct LiveStream {
-    should_close: bool,
     source: Source,
     wicketick: WickeTick,
     wicketick_copy: Arc<Mutex<WickeTick>>,
@@ -405,7 +359,7 @@ struct LiveStream {
 }
 
 impl TickerPhaseTemp for LiveStream {
-    fn update(mut self) -> Result<(), Error> {
+    fn update(&mut self) -> Result<(), Error> {
         // here we want to yield on our refresh task, and see if we've got a new update
         match self.configuration {
             TickerConfiguration::MinimalTicker => {
@@ -442,15 +396,22 @@ impl TickerPhaseTemp for LiveStream {
         Ok(())
     }
 
-    fn handle_input(mut self) -> Result<Option<TickerPhase>, Error> {
+    fn handle_input(&mut self) -> Result<HandleInputResponse, Error> {
+        let mut should_close: bool = false;
         if let Some(key) = input_key_press()? {
             match key {
-                KeyCode::Char('q') => self.should_close = true,
-                KeyCode::Char('r') => self.wicketick.refresh()?, // TODO here is where we want to spawn a new task
+                KeyCode::Char('q') => should_close = true,
+                KeyCode::Char('r') => {
+                    // TODO kick off a task
+                }
+                // KeyCode::Char('r') => self.wicketick.refresh()?, // TODO here is where we want to spawn a new task
                 _ => {}
             }
         }
-        Ok(None)
+        Ok(HandleInputResponse {
+            should_close,
+            phase: None,
+        })
     }
 }
 
@@ -458,7 +419,6 @@ impl LiveStream {
     fn new(source: Source, wicketick: WickeTick) -> Self {
         let wicketick_clone = wicketick.clone();
         LiveStream {
-            should_close: false,
             source,
             wicketick,
             wicketick_copy: Arc::new(Mutex::new(wicketick_clone)),
