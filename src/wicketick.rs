@@ -111,6 +111,12 @@ impl SimpleSummary {
     pub fn display(&self) -> String {
         return self.current_innings.display();
     }
+
+    pub fn new() -> Self {
+        Self {
+            current_innings: Innings::new(),
+        }
+    }
 }
 
 #[derive(Clone)]
@@ -127,5 +133,13 @@ impl Innings {
         let overs = &self.overs;
         let text = format!("{}-{} {}", runs, wickets, overs);
         return text;
+    }
+
+    pub fn new() -> Self {
+        Self {
+            runs: 0,
+            wickets: 0,
+            overs: "0".to_string(),
+        }
     }
 }

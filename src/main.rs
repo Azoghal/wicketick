@@ -11,14 +11,20 @@ use ratatui::{
     widgets::Paragraph,
     Terminal,
 };
-use wicketick::{poll_wicketick, Source, WickeTick};
+use wicketick::{poll_wicketick, Innings, SimpleSummary, Source, WickeTick};
 
 use std::{
     io::{stdout, Stdout},
     sync::Arc,
     time::Duration,
 };
-use tokio::sync::Mutex;
+use tokio::{
+    select,
+    sync::{
+        mpsc::{self, Receiver, Sender},
+        Mutex,
+    },
+};
 
 pub mod errors;
 use errors::Error;
@@ -100,6 +106,21 @@ async fn main() -> Result<(), Error> {
 
     let mut state: TickerState = TickerState { terminal, phase };
 
+    // Move this to correct place
+    let (tx, mut rx) = mpsc::channel(1);
+
+    // TODO move this to be begun in the correct place
+    // In the end we'll kick off a request
+    tokio::spawn(async move {
+        let mut summary = SimpleSummary::new();
+        // just always provide a new simple summary that's got an extra run?
+        loop {
+            tx.send(summary.clone()).await.unwrap();
+            tokio::time::sleep(std::time::Duration::from_millis(500)).await;
+            summary.current_innings.runs += 1;
+        }
+    });
+
     // initialise, block on any necessary setup
     draw(&mut state).await?;
 
@@ -109,7 +130,7 @@ async fn main() -> Result<(), Error> {
     // state.phase.handle_input()
     loop {
         // Update
-        update(&mut state).await?;
+        update(&mut state, &mut rx).await?;
 
         // Draw
         draw(&mut state).await?;
@@ -125,12 +146,23 @@ async fn main() -> Result<(), Error> {
     Ok(())
 }
 
-async fn update(state: &mut TickerState) -> Result<(), Error> {
+// TODO take update receiver?
+async fn update(
+    state: &mut TickerState,
+    update_receiver: &mut Receiver<SimpleSummary>,
+) -> Result<(), Error> {
     // calculate what we want to display
-    // TODO think if there's a nicer way
+
     let Some(phase) = state.phase.as_inner_trait() else {
         return Err(Error::Todo("update failed to get trait".to_string()));
     };
+
+    select! {
+        Some(value) = update_receiver.recv() => {
+            phase.update_summary(value)
+        }
+    }
+
     phase.update()
 }
 
@@ -172,6 +204,8 @@ fn input_key_press() -> Result<Option<KeyCode>, Error> {
 struct TickerState {
     terminal: ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
     phase: TickerPhase,
+    // have a tokio channel and use selectors?
+    // have a tokio runtime into which we can spawn jobs?
 }
 
 // Used to control what functionality the UI needs to be providing
@@ -204,6 +238,7 @@ async fn handle_poll(wicketick: &mut WickeTick, wicketick_copy: &Arc<Mutex<Wicke
 
 trait TickerPhaseTemp {
     fn update(&mut self) -> Result<(), Error>;
+    fn update_summary(&mut self, summary: SimpleSummary) {}
     fn draw(
         &mut self,
         terminal: &mut ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
@@ -356,11 +391,14 @@ struct LiveStream {
     wicketick: WickeTick,
     wicketick_copy: Arc<Mutex<WickeTick>>,
     configuration: TickerConfiguration,
+    sender: Sender<SimpleSummary>,
+    receiver: Receiver<SimpleSummary>,
 }
 
 impl TickerPhaseTemp for LiveStream {
     fn update(&mut self) -> Result<(), Error> {
-        // here we want to yield on our refresh task, and see if we've got a new update
+        // here we want to try receiving from our channel with tokio select
+        // which lets us recognise that nothing has changed.
         match self.configuration {
             TickerConfiguration::MinimalTicker => {
                 handle_poll(&mut self.wicketick, &self.wicketick_copy);
@@ -368,6 +406,10 @@ impl TickerPhaseTemp for LiveStream {
             TickerConfiguration::_RelaxedTicker(_size) => {}
         }
         Ok(())
+    }
+
+    fn update_summary(&mut self, summary: SimpleSummary) {
+        self.wicketick.summary = Some(summary)
     }
 
     fn draw(
@@ -418,11 +460,14 @@ impl TickerPhaseTemp for LiveStream {
 impl LiveStream {
     fn new(source: Source, wicketick: WickeTick) -> Self {
         let wicketick_clone = wicketick.clone();
+        let (tx, rx) = mpsc::channel(1);
         LiveStream {
             source,
             wicketick,
             wicketick_copy: Arc::new(Mutex::new(wicketick_clone)),
             configuration: TickerConfiguration::MinimalTicker,
+            sender: tx,
+            receiver: rx,
         }
     }
 }
