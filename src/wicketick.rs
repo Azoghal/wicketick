@@ -32,7 +32,9 @@ impl fmt::Display for Source {
 //     }
 // }
 
-pub static DEFAULT_POLL_INTERVAL: time::Duration = time::Duration::from_secs(30);
+pub static DEFAULT_POLL_INTERVAL_SECS: u64 = 30;
+pub static DEFAULT_POLL_INTERVAL: time::Duration =
+    time::Duration::from_secs(DEFAULT_POLL_INTERVAL_SECS);
 
 #[derive(Clone)]
 pub struct WickeTick {
@@ -42,19 +44,19 @@ pub struct WickeTick {
     pub poll_interval: Option<time::Duration>,
 }
 
-pub async fn poll_wicketick(wicketick: Arc<Mutex<WickeTick>>, interval: Duration) {
-    loop {
-        {
-            let mut locked_wicketick = wicketick.lock().await;
-            let res = locked_wicketick.refresh().await;
-            if let Err(err) = res {
-                // TODO proper logging, or somewhere to display it in the canvas
-                println!("failed to poll: {}", err)
-            }
-        }
-        sleep(interval).await;
-    }
-}
+// pub async fn poll_wicketick(wicketick: Arc<Mutex<WickeTick>>, interval: Duration) {
+//     loop {
+//         {
+//             let mut locked_wicketick = wicketick.lock().await;
+//             let res = locked_wicketick.refresh().await;
+//             if let Err(err) = res {
+//                 // TODO proper logging, or somewhere to display it in the canvas
+//                 println!("failed to poll: {}", err)
+//             }
+//         }
+//         sleep(interval).await;
+//     }
+// }
 
 impl WickeTick {
     pub fn new(source: Source, poll_interval: Option<time::Duration>) -> Self {
@@ -87,7 +89,7 @@ impl WickeTick {
         }
     }
 
-    pub async fn refetch(self) -> Result<SimpleSummary, Error> {
+    pub async fn refetch(&self) -> Result<SimpleSummary, Error> {
         match self.source.clone() {
             Source::Cricinfo {
                 match_id: Some(m_id),
@@ -121,8 +123,8 @@ impl SimpleSummary {
 
 #[derive(Clone)]
 pub struct Innings {
-    pub runs: i32,
-    pub wickets: i32,
+    pub runs: u32,
+    pub wickets: u32,
     pub overs: String,
 }
 

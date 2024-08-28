@@ -11,7 +11,9 @@ use ratatui::{
     widgets::Paragraph,
     Terminal,
 };
-use wicketick::{poll_wicketick, Innings, SimpleSummary, Source, WickeTick};
+use wicketick::{
+    SimpleSummary, Source, WickeTick, DEFAULT_POLL_INTERVAL, DEFAULT_POLL_INTERVAL_SECS,
+};
 
 use std::{
     io::{stdout, Stdout},
@@ -24,7 +26,10 @@ use tokio::{
         mpsc::{self, Receiver, Sender},
         Mutex,
     },
+    task::JoinHandle,
 };
+
+use rand::Rng;
 
 pub mod errors;
 use errors::Error;
@@ -41,7 +46,7 @@ struct Args {
     source: Option<CliSources>,
 
     // polling interval in seconds
-    #[arg(short, long, default_value_t = 30)]
+    #[arg(short, long, default_value_t = DEFAULT_POLL_INTERVAL_SECS)]
     time_interval: u64,
     // Obviously there could be all sorts of things we do here
 }
@@ -67,9 +72,7 @@ fn terminal_teardown() -> Result<(), Error> {
     Ok(())
 }
 
-// TODO this needs to be called at the right time, rather than when parsing args
-fn phase_from_args<'a>(args: Args) -> Result<TickerPhase, Error> {
-    // TODO it's a shame that this blocks the main loop from starting till it's fetched
+fn phase_from_args<'a>(args: Args) -> Result<(TickerPhase, Option<JoinHandle<()>>), Error> {
     match args.source {
         Some(source) => match source {
             CliSources::Cricinfo { match_id } => match match_id {
@@ -82,15 +85,21 @@ fn phase_from_args<'a>(args: Args) -> Result<TickerPhase, Error> {
                         poll_interval: Some(Duration::from_secs(args.time_interval)),
                     };
 
-                    Ok(TickerPhase::LiveStream(LiveStream::new(source, w)))
+                    // TODO so we can't stop this boy
+                    let (live_stream, stopper) = LiveStream::new(source, w);
+
+                    Ok((TickerPhase::LiveStream(live_stream), Some(stopper)))
                 }
-                None => Ok(TickerPhase::MatchSelect(MatchSelect {
-                    source: wicketick::Source::Cricinfo { match_id: None },
-                })),
+                None => Ok((
+                    TickerPhase::MatchSelect(MatchSelect {
+                        source: wicketick::Source::Cricinfo { match_id: None },
+                    }),
+                    None,
+                )),
             },
             _ => Err(errors::Error::Todo("not sure".to_string())),
         },
-        None => Ok(TickerPhase::SourceSelect(SourceSelect::new())),
+        None => Ok((TickerPhase::SourceSelect(SourceSelect::new()), None)),
     }
 }
 
@@ -102,24 +111,28 @@ async fn main() -> Result<(), Error> {
     let mut terminal = Terminal::new(CrosstermBackend::new(stdout()))?;
     terminal.clear()?;
 
-    let phase = phase_from_args(args)?;
+    let (phase, stopper) = phase_from_args(args)?;
 
-    let mut state: TickerState = TickerState { terminal, phase };
+    let mut state: TickerState = TickerState {
+        terminal,
+        phase,
+        stopper,
+    };
 
-    // Move this to correct place
-    let (tx, mut rx) = mpsc::channel(1);
+    // // Move this to correct place
+    // let (tx, mut rx) = mpsc::channel(1);
 
-    // TODO move this to be begun in the correct place
-    // In the end we'll kick off a request
-    tokio::spawn(async move {
-        let mut summary = SimpleSummary::new();
-        // just always provide a new simple summary that's got an extra run?
-        loop {
-            tx.send(summary.clone()).await.unwrap();
-            tokio::time::sleep(std::time::Duration::from_millis(500)).await;
-            summary.current_innings.runs += 1;
-        }
-    });
+    // // TODO move this to be begun in the correct place
+    // // In the end we'll kick off a request
+    // tokio::spawn(async move {
+    //     let mut summary = SimpleSummary::new();
+    //     // just always provide a new simple summary that's got an extra run?
+    //     loop {
+    //         tx.send(summary.clone()).await.unwrap();
+    //         tokio::time::sleep(std::time::Duration::from_millis(500)).await;
+    //         summary.current_innings.runs += 1;
+    //     }
+    // });
 
     // initialise, block on any necessary setup
     draw(&mut state).await?;
@@ -130,7 +143,7 @@ async fn main() -> Result<(), Error> {
     // state.phase.handle_input()
     loop {
         // Update
-        update(&mut state, &mut rx).await?;
+        update(&mut state).await?;
 
         // Draw
         draw(&mut state).await?;
@@ -146,22 +159,17 @@ async fn main() -> Result<(), Error> {
     Ok(())
 }
 
-// TODO take update receiver?
-async fn update(
-    state: &mut TickerState,
-    update_receiver: &mut Receiver<SimpleSummary>,
-) -> Result<(), Error> {
+async fn update(state: &mut TickerState) -> Result<(), Error> {
     // calculate what we want to display
+
+    match &mut state.phase {
+        TickerPhase::LiveStream(live_stream) => live_stream.consume_update(),
+        _ => {}
+    }
 
     let Some(phase) = state.phase.as_inner_trait() else {
         return Err(Error::Todo("update failed to get trait".to_string()));
     };
-
-    select! {
-        Some(value) = update_receiver.recv() => {
-            phase.update_summary(value)
-        }
-    }
 
     phase.update()
 }
@@ -183,7 +191,13 @@ async fn handle_input(state: &mut TickerState) -> Result<bool, Error> {
     let new_phase = phase.handle_input()?;
 
     match new_phase.phase {
-        Some(phase) => state.phase = phase,
+        Some(phase) => {
+            if let Some(join_handle) = &state.stopper {
+                join_handle.abort();
+            }
+            state.phase = phase;
+            state.stopper = new_phase.stopper;
+        }
         None => {}
     }
 
@@ -204,8 +218,9 @@ fn input_key_press() -> Result<Option<KeyCode>, Error> {
 struct TickerState {
     terminal: ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
     phase: TickerPhase,
-    // have a tokio channel and use selectors?
-    // have a tokio runtime into which we can spawn jobs?
+    stopper: Option<JoinHandle<()>>, // TODO i don't like this
+                                     // have a tokio channel and use selectors?
+                                     // have a tokio runtime into which we can spawn jobs?
 }
 
 // Used to control what functionality the UI needs to be providing
@@ -227,18 +242,19 @@ impl TickerPhase {
 }
 
 // handle poll might also be needed in match select?
-async fn handle_poll(wicketick: &mut WickeTick, wicketick_copy: &Arc<Mutex<WickeTick>>) {
-    if let Some(_) = wicketick.poll_interval {
-        let locked = wicketick_copy.lock().await;
-        if let Some(summary) = locked.summary.clone() {
-            wicketick.summary = Some(summary);
-        }
-    }
-}
+// async fn handle_poll(wicketick: &mut WickeTick, wicketick_copy: &Arc<Mutex<WickeTick>>) {
+//     if let Some(_) = wicketick.poll_interval {
+//         let locked = wicketick_copy.lock().await;
+//         if let Some(summary) = locked.summary.clone() {
+//             wicketick.summary = Some(summary);
+//         }
+//     }
+// }
 
+// TODO i think this should include a (start) and an (end)
+// to control things that should happen as we enter and leave the phase...
 trait TickerPhaseTemp {
     fn update(&mut self) -> Result<(), Error>;
-    fn update_summary(&mut self, summary: SimpleSummary) {}
     fn draw(
         &mut self,
         terminal: &mut ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
@@ -246,9 +262,17 @@ trait TickerPhaseTemp {
     fn handle_input(&mut self) -> Result<HandleInputResponse, Error>;
 }
 
+// trait Poller<I, O> {
+//     // start_poll kicks off some processing that consume will be able to see the value of
+//     fn start_poll(poller: I);
+
+//     async fn consume_update(updated_val: O);
+// }
+
 struct HandleInputResponse {
     should_close: bool,
     phase: Option<TickerPhase>,
+    stopper: Option<JoinHandle<()>>, // TODO really this should be part of the phase... but i think that leads to problems
 }
 
 struct SourceSelect {}
@@ -289,6 +313,7 @@ impl TickerPhaseTemp for SourceSelect {
                         phase: Some(TickerPhase::MatchSelect(MatchSelect::new(
                             Source::Cricinfo { match_id: None },
                         ))),
+                        stopper: None,
                     })
                 }
                 _ => {}
@@ -297,6 +322,7 @@ impl TickerPhaseTemp for SourceSelect {
         Ok(HandleInputResponse {
             should_close,
             phase: None,
+            stopper: None,
         })
     }
 }
@@ -346,20 +372,14 @@ impl TickerPhaseTemp for MatchSelect {
                     };
                     // TODO separate this out
                     let wicketick = WickeTick::new(new_source.clone(), None);
-                    let interval = wicketick.clone().poll_interval;
                     let configuration = TickerConfiguration::MinimalTicker;
-                    let wicketick_copy = Arc::new(Mutex::new(wicketick.clone()));
-                    if let Some(int) = interval {
-                        let data_clone = Arc::clone(&wicketick_copy);
-                        // TODO some way to kill thread when needed? let (tx, mut rx) = mpsc::channel(1);
-                        tokio::spawn(poll_wicketick(data_clone, int));
-                    }
+
+                    let (live_stream, stopper) = LiveStream::new(new_source.clone(), wicketick);
+
                     return Ok(HandleInputResponse {
                         should_close,
-                        phase: Some(TickerPhase::LiveStream(LiveStream::new(
-                            new_source.clone(),
-                            wicketick,
-                        ))),
+                        phase: Some(TickerPhase::LiveStream(live_stream)),
+                        stopper: Some(stopper),
                     });
                 }
                 _ => {}
@@ -368,6 +388,7 @@ impl TickerPhaseTemp for MatchSelect {
         Ok(HandleInputResponse {
             should_close,
             phase: None,
+            stopper: None,
         })
     }
 }
@@ -389,9 +410,9 @@ enum TickerConfiguration {
 struct LiveStream {
     source: Source,
     wicketick: WickeTick,
-    wicketick_copy: Arc<Mutex<WickeTick>>,
+    // wicketick_copy: Arc<Mutex<WickeTick>>,
     configuration: TickerConfiguration,
-    sender: Sender<SimpleSummary>,
+    // sender: Sender<SimpleSummary>,
     receiver: Receiver<SimpleSummary>,
 }
 
@@ -400,16 +421,10 @@ impl TickerPhaseTemp for LiveStream {
         // here we want to try receiving from our channel with tokio select
         // which lets us recognise that nothing has changed.
         match self.configuration {
-            TickerConfiguration::MinimalTicker => {
-                handle_poll(&mut self.wicketick, &self.wicketick_copy);
-            }
+            TickerConfiguration::MinimalTicker => {}
             TickerConfiguration::_RelaxedTicker(_size) => {}
         }
         Ok(())
-    }
-
-    fn update_summary(&mut self, summary: SimpleSummary) {
-        self.wicketick.summary = Some(summary)
     }
 
     fn draw(
@@ -453,21 +468,54 @@ impl TickerPhaseTemp for LiveStream {
         Ok(HandleInputResponse {
             should_close,
             phase: None,
+            stopper: None,
         })
     }
 }
 
+// TODO could genericify this too
 impl LiveStream {
-    fn new(source: Source, wicketick: WickeTick) -> Self {
-        let wicketick_clone = wicketick.clone();
+    fn start_poll(&mut self, sender: Sender<SimpleSummary>) -> JoinHandle<()> {
+        let w = self.wicketick.clone();
+        let h = tokio::spawn(async move {
+            loop {
+                if let Ok(summary) = w.refetch().await {
+                    // just always provide a new simple summary that's got an extra run?
+                    sender.send(summary.clone()).await.unwrap();
+                }
+                if let Some(interval) = w.poll_interval {
+                    tokio::time::sleep(interval.clone()).await;
+                } else {
+                    tokio::time::sleep(DEFAULT_POLL_INTERVAL).await;
+                }
+            }
+        });
+        h
+    }
+
+    fn consume_update(&mut self) {
+        if let Ok(summary) = self.receiver.try_recv() {
+            self.wicketick.summary = Some(summary);
+        };
+    }
+}
+
+// type PollStarter = fn() -> JoinHandle<()>;
+
+impl LiveStream {
+    // new creates and returns a new phase, also starts the poller, and returns the JoinHandle needed to abort the poller
+    fn new(source: Source, wicketick: WickeTick) -> (Self, JoinHandle<()>) {
         let (tx, rx) = mpsc::channel(1);
-        LiveStream {
+
+        let mut ls = LiveStream {
             source,
             wicketick,
-            wicketick_copy: Arc::new(Mutex::new(wicketick_clone)),
             configuration: TickerConfiguration::MinimalTicker,
-            sender: tx,
             receiver: rx,
-        }
+        };
+
+        let jh = ls.start_poll(tx);
+
+        (ls, jh)
     }
 }

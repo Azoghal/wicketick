@@ -49,8 +49,8 @@ impl Summary {
     pub fn into(self) -> wicketick::SimpleSummary {
         return wicketick::SimpleSummary {
             current_innings: wicketick::Innings {
-                runs: self.live.innings.runs,
-                wickets: self.live.innings.wickets,
+                runs: self.live.innings.runs as u32,
+                wickets: self.live.innings.wickets as u32,
                 overs: self.live.innings.overs,
             },
         };
