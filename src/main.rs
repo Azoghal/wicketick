@@ -477,10 +477,12 @@ impl TickerPhaseTemp for LiveStream {
 impl LiveStream {
     fn start_poll(&mut self, sender: Sender<SimpleSummary>) -> JoinHandle<()> {
         let w = self.wicketick.clone();
+        let mut loop_count = 0;
         let h = tokio::spawn(async move {
             loop {
-                if let Ok(summary) = w.refetch().await {
-                    // just always provide a new simple summary that's got an extra run?
+                if let Ok(mut summary) = w.refetch().await {
+                    summary.debug_string = format!("Loop {}", loop_count);
+                    loop_count += 1;
                     sender.send(summary.clone()).await.unwrap();
                 }
                 if let Some(interval) = w.poll_interval {

@@ -53,6 +53,7 @@ impl Summary {
                 wickets: self.live.innings.wickets as u32,
                 overs: self.live.innings.overs,
             },
+            debug_string: "".to_string(),
         };
     }
 }

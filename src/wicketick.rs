@@ -107,16 +107,27 @@ impl WickeTick {
 #[derive(Clone)]
 pub struct SimpleSummary {
     pub current_innings: Innings,
+    pub debug_string: String,
 }
 
 impl SimpleSummary {
     pub fn display(&self) -> String {
-        return self.current_innings.display();
+        if self.debug_string != "" {
+            return format!("{} {}", self.current_innings.display(), self.debug_string);
+        }
+        self.current_innings.display()
     }
 
     pub fn new() -> Self {
+        Self::default()
+    }
+}
+
+impl Default for SimpleSummary {
+    fn default() -> Self {
         Self {
             current_innings: Innings::new(),
+            debug_string: "".to_string(),
         }
     }
 }
