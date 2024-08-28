@@ -341,11 +341,9 @@ impl TickerPhaseTemp for MatchSelect {
         terminal: &mut ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
     ) -> Result<(), Error> {
         let widget = match &self.source {
-            Source::Cricinfo { match_id } => {
-                Paragraph::new("1. Default Match from the hundred 2024")
-                    .white()
-                    .on_green()
-            }
+            Source::Cricinfo { match_id } => Paragraph::new("1. England Sri Lanka Lord's 2024")
+                .white()
+                .on_green(),
             Source::_SomeApi {
                 base_url,
                 api_token,
@@ -368,12 +366,9 @@ impl TickerPhaseTemp for MatchSelect {
                 KeyCode::Char('1') => {
                     // TODO un hardcode this
                     let new_source = &mut Source::Cricinfo {
-                        match_id: Some("1417823".to_string()),
+                        match_id: Some("1385695".to_string()),
                     };
-                    // TODO separate this out
                     let wicketick = WickeTick::new(new_source.clone(), None);
-                    let configuration = TickerConfiguration::MinimalTicker;
-
                     let (live_stream, stopper) = LiveStream::new(new_source.clone(), wicketick);
 
                     return Ok(HandleInputResponse {
