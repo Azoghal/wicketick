@@ -51,6 +51,12 @@ enum CliSources {
         #[arg(short, long, default_value=None)]
         match_id: Option<String>,
     },
+
+    #[command(about = "use a local copy of a cricinfo summary as the source")]
+    LocalCricinfo {
+        #[arg(short, long)]
+        filename: String,
+    },
 }
 
 fn terminal_preamble() -> Result<(), Error> {
@@ -90,7 +96,23 @@ fn phase_from_args<'a>(args: Args) -> Result<(TickerPhase, Option<JoinHandle<()>
                     None,
                 )),
             },
-            // _ => Err(errors::Error::Todo("not sure".to_string())),
+            CliSources::LocalCricinfo { filename } => {
+                match std::path::Path::new(&filename).exists() {
+                    true => {
+                        let source = wicketick::Source::LocalCricinfo { filename };
+                        let w = WickeTick {
+                            source: source.clone(),
+                            summary: None,
+                            last_refresh: None,
+                            poll_interval: Some(Duration::from_secs(args.time_interval)),
+                        };
+
+                        let (live_stream, stopper) = LiveStream::new(w);
+                        Ok((TickerPhase::LiveStream(live_stream), Some(stopper)))
+                    }
+                    false => Err(errors::Error::Todo("file does not exist".to_string())),
+                }
+            } // _ => Err(errors::Error::Todo("not sure".to_string())),
         },
         None => Ok((TickerPhase::SourceSelect(SourceSelect::new()), None)),
     }
@@ -285,7 +307,7 @@ impl TickerPhaseTemp for SourceSelect {
         &mut self,
         terminal: &mut ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
     ) -> Result<(), Error> {
-        let widget = Paragraph::new("1. CricInfo").white().on_green();
+        let widget = Paragraph::new("1. CricInfo\n").white().on_green();
         terminal.draw(|frame| {
             let area = frame.size();
             frame.render_widget(widget, area);
@@ -339,6 +361,9 @@ impl TickerPhaseTemp for MatchSelect {
                     .white()
                     .on_green()
             }
+            Source::LocalCricinfo { filename } => Paragraph::new(format!("1. {}", filename))
+                .white()
+                .on_green(),
             Source::_SomeApi {
                 base_url: _,
                 api_token: _,
@@ -474,14 +499,20 @@ impl TickerPhaseTemp for LiveStream {
 // TODO could genericify this too
 impl LiveStream {
     fn start_poll(&mut self, sender: Sender<SimpleSummary>) -> JoinHandle<()> {
+        eprintln!("starting poll");
         let w = self.wicketick.clone();
         let mut loop_count = 0;
         let h = tokio::spawn(async move {
             loop {
-                if let Ok(mut summary) = w.refetch().await {
-                    summary.debug_string = format!("Loop {}", loop_count);
-                    loop_count += 1;
-                    sender.send(summary.clone()).await.unwrap();
+                match w.refetch().await {
+                    Ok(mut summary) => {
+                        summary.debug_string = format!("Loop {}", loop_count);
+                        loop_count += 1;
+                        sender.send(summary.clone()).await.unwrap();
+                    }
+                    Err(e) => {
+                        eprintln!("Oh no: {}", e);
+                    }
                 }
                 if let Some(interval) = w.poll_interval {
                     tokio::time::sleep(interval.clone()).await;

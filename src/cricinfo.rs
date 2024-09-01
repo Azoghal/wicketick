@@ -22,6 +22,25 @@ pub async fn get_match_summary(match_id: String) -> Result<wicketick::SimpleSumm
     return Ok(wicketick);
 }
 
+pub fn load_match_summary(filename: String) -> Result<wicketick::SimpleSummary, Error> {
+    let file = std::fs::File::open(filename)?;
+
+    let match_summary: Summary = serde_json::from_reader(file)?;
+
+    let wicketick = match_summary.into();
+
+    return Ok(wicketick);
+}
+
+fn parse_u32(bob: String) -> u32 {
+    bob.parse::<u32>()
+        .map_err(|e| {
+            eprintln!("failed to parse u32 {}", e);
+            Some(0)
+        })
+        .unwrap()
+}
+
 // Layout in structs all the info from the Json they host, that we actually care about
 // Then we can automatically deserialise it, and we're good to go
 
@@ -29,6 +48,11 @@ pub async fn get_match_summary(match_id: String) -> Result<wicketick::SimpleSumm
 struct Summary {
     live: LiveState,
     // centre: Centre,
+}
+
+#[derive(Deserialize, Debug)]
+struct LocalSummary {
+    live: LiveState,
 }
 
 // #[derive(Deserialize, Debug)]
@@ -39,7 +63,7 @@ struct Summary {
 
 #[derive(Deserialize, Debug, Clone)]
 struct Batter {
-    balls_faced: u32,
+    balls_faced: String,
     known_as: String,
     // live_current_name: String,
     // popular_name: String,
@@ -48,7 +72,8 @@ struct Batter {
 
 impl Batter {
     fn into(self) -> wicketick::Batter {
-        wicketick::Batter::new(&self.known_as, self.runs, self.balls_faced)
+        let balls_faced = parse_u32(self.balls_faced);
+        wicketick::Batter::new(&self.known_as, self.runs, balls_faced)
     }
 }
 

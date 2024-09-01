@@ -9,6 +9,7 @@ use crate::{cricinfo, errors};
 #[derive(Clone)]
 pub enum Source {
     Cricinfo { match_id: Option<String> },
+    LocalCricinfo { filename: String },
     _SomeApi { base_url: String, api_token: String },
 }
 
@@ -16,6 +17,7 @@ impl fmt::Display for Source {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Source::Cricinfo { match_id } => write!(f, "CricInfo(match_id:{:?})", match_id),
+            Source::LocalCricinfo { filename } => write!(f, "CricInfo (local file {})", filename),
             Source::_SomeApi {
                 base_url: _,
                 api_token: _,
@@ -43,20 +45,6 @@ pub struct WickeTick {
     pub poll_interval: Option<time::Duration>,
 }
 
-// pub async fn poll_wicketick(wicketick: Arc<Mutex<WickeTick>>, interval: Duration) {
-//     loop {
-//         {
-//             let mut locked_wicketick = wicketick.lock().await;
-//             let res = locked_wicketick.refresh().await;
-//             if let Err(err) = res {
-//                 // TODO proper logging, or somewhere to display it in the canvas
-//                 println!("failed to poll: {}", err)
-//             }
-//         }
-//         sleep(interval).await;
-//     }
-// }
-
 impl WickeTick {
     pub fn new(source: Source, poll_interval: Option<time::Duration>) -> Self {
         let poll_t = match poll_interval {
@@ -71,23 +59,6 @@ impl WickeTick {
         };
     }
 
-    pub async fn refresh(&mut self) -> Result<(), Error> {
-        match self.source.clone() {
-            Source::Cricinfo {
-                match_id: Some(m_id),
-            } => {
-                self.last_refresh = Some(time::Instant::now());
-                self.summary = Some(cricinfo::get_match_summary(m_id).await?);
-                Ok(())
-            }
-            Source::Cricinfo { match_id: None } => {
-                // Nothing to refresh
-                Ok(())
-            }
-            _ => Err(Error::Todo("not implemented".to_string())),
-        }
-    }
-
     pub async fn refetch(&self) -> Result<SimpleSummary, Error> {
         match self.source.clone() {
             Source::Cricinfo {
@@ -97,7 +68,11 @@ impl WickeTick {
                 // Nothing to refresh
                 Err(Error::Todo("no match id".to_string()))
             }
-            _ => Err(Error::Todo("not implemented".to_string())),
+            Source::LocalCricinfo { filename } => cricinfo::load_match_summary(filename),
+            Source::_SomeApi {
+                base_url: _,
+                api_token: _,
+            } => Err(Error::Todo("not implemented".to_string())),
         }
     }
 }
