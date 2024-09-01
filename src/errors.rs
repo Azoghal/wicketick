@@ -1,4 +1,3 @@
-
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -20,6 +19,9 @@ pub enum Error {
         #[from]
         source: reqwest::Error,
     },
+
+    #[error("parse error")]
+    ParseError(String),
 
     #[error("TODO error")]
     Todo(String),

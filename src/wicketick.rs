@@ -1,11 +1,12 @@
+use std::str::FromStr;
 use std::sync::Arc;
 use std::{fmt, time};
 
 use tokio::sync::Mutex;
 use tokio::time::{sleep, Duration};
 
-use crate::cricinfo;
 use crate::errors::Error;
+use crate::{cricinfo, errors};
 
 #[derive(Clone)]
 pub enum Source {
@@ -107,10 +108,14 @@ impl WickeTick {
 #[derive(Clone)]
 pub struct SimpleSummary {
     pub current_innings: Innings,
+    pub active_players: ActivePlayers,
     pub debug_string: String,
 }
 
 impl SimpleSummary {
+    // display will just return the simplest summary.
+    // display should be called on each summary field by the configurations in order
+    // to get the relevant strings
     pub fn display(&self) -> String {
         if self.debug_string != "" {
             return format!("{} {}", self.current_innings.display(), self.debug_string);
@@ -127,6 +132,7 @@ impl Default for SimpleSummary {
     fn default() -> Self {
         Self {
             current_innings: Innings::new(),
+            active_players: ActivePlayers::default(),
             debug_string: "".to_string(),
         }
     }
@@ -140,6 +146,7 @@ pub struct Innings {
 }
 
 impl Innings {
+    // displays the high level sumamry of the innings - runs, wickets, overs
     pub fn display(&self) -> String {
         let runs = self.runs;
         let wickets = self.wickets;
@@ -149,10 +156,185 @@ impl Innings {
     }
 
     pub fn new() -> Self {
+        Self::default()
+    }
+}
+
+impl Default for Innings {
+    fn default() -> Self {
         Self {
             runs: 0,
             wickets: 0,
             overs: "0".to_string(),
+        }
+    }
+}
+
+#[derive(Clone)]
+pub struct ActivePlayers {
+    pub batter_one: Option<Batter>,
+    pub batter_two: Option<Batter>,
+    pub bowler_one: Option<Bowler>,
+    pub bowler_two: Option<Bowler>,
+}
+
+impl Default for ActivePlayers {
+    fn default() -> Self {
+        Self {
+            batter_one: None,
+            batter_two: None,
+            bowler_one: None,
+            bowler_two: None,
+        }
+    }
+}
+
+impl ActivePlayers {
+    // TODO change return type to e.g. be a tuple of the different things so they can be separated?
+    pub fn display_bowlers(&self) -> String {
+        let one_string = match &self.bowler_one {
+            Some(bowler) => bowler.display(),
+            None => "".to_string(),
+        };
+        let two_string = match &self.bowler_two {
+            Some(bowler) => bowler.display(),
+            None => "".to_string(),
+        };
+        format!("{} | {}", one_string, two_string)
+    }
+
+    pub fn display_batters(&self) -> String {
+        let one_string = match &self.batter_one {
+            Some(batter) => batter.display(),
+            None => "".to_string(),
+        };
+        let two_string = match &self.batter_two {
+            Some(batter) => batter.display(),
+            None => "".to_string(),
+        };
+        format!("{} | {}", one_string, two_string)
+    }
+}
+
+#[derive(Clone)]
+pub struct Batter {
+    name: String,
+    runs: u32,
+    balls_faced: u32,
+    on_strike: bool,
+}
+
+impl Batter {
+    pub fn new(name: &str, runs: u32, balls_faced: u32) -> Self {
+        Self {
+            name: name.to_string(),
+            runs,
+            balls_faced,
+            on_strike: false,
+        }
+    }
+
+    // Root* 57 (54)
+    pub fn display(&self) -> String {
+        let strike_marker = match self.on_strike {
+            true => "*",
+            false => "",
+        };
+        format!(
+            "{}{} {} ({})",
+            self.name, strike_marker, self.runs, self.balls_faced
+        )
+    }
+}
+
+// TODO separate the figures part of a batter and bowler from the batter and bowler struct types?
+#[derive(Clone)]
+pub struct Bowler {
+    name: String,
+    overs: Overs,
+    wickets: u32,
+    runs_conceded: u32,
+}
+
+impl Bowler {
+    pub fn new(name: &str, overs: Overs, wickets: u32, runs_conceded: u32) -> Self {
+        Self {
+            name: name.to_string(),
+            overs,
+            wickets,
+            runs_conceded,
+        }
+    }
+
+    // Broad 4-37 (12.1)
+    pub fn display(&self) -> String {
+        format!(
+            "{} {}-{} ({})",
+            self.name,
+            self.wickets,
+            self.runs_conceded,
+            self.overs.display()
+        )
+    }
+}
+
+#[derive(Clone)]
+pub struct Overs {
+    full_overs: u32,
+    spare_balls: u32,
+}
+
+impl Overs {
+    pub fn display(&self) -> String {
+        if self.spare_balls == 0 {
+            return format!("{}", self.full_overs);
+        }
+        return format!("{}.{}", self.full_overs, self.spare_balls);
+    }
+
+    pub fn from_str_with_default(s: &str) -> Self {
+        match Self::from_str(s) {
+            Ok(overs) => overs,
+            Err(_) => Self::default(),
+        }
+    }
+}
+
+impl FromStr for Overs {
+    type Err = errors::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s.split_once(",") {
+            None => {
+                let o = (s
+                    .parse::<u32>()
+                    .map_err(|_| errors::Error::ParseError("overs".to_string())))?;
+                Ok(Self {
+                    full_overs: o,
+                    spare_balls: 0,
+                })
+            }
+            Some((o, b)) => {
+                let overs = (o
+                    .parse::<u32>()
+                    .map_err(|_| errors::Error::ParseError("overs".to_string())))?;
+                let balls = (b
+                    .parse::<u32>()
+                    .map_err(|_| errors::Error::ParseError("overs".to_string())))?;
+                Ok(Self {
+                    full_overs: overs,
+                    spare_balls: balls,
+                })
+            }
+        }
+    }
+}
+
+impl Default for Overs {
+    fn default() -> Self {
+        Self {
+            full_overs: 0,
+            spare_balls: 0,
         }
     }
 }

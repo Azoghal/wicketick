@@ -341,9 +341,11 @@ impl TickerPhaseTemp for MatchSelect {
         terminal: &mut ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
     ) -> Result<(), Error> {
         let widget = match &self.source {
-            Source::Cricinfo { match_id } => Paragraph::new("1. England Sri Lanka Lord's 2024")
-                .white()
-                .on_green(),
+            Source::Cricinfo { match_id } => {
+                Paragraph::new("1. pakistan-vs-bangladesh-2nd-test-1442214")
+                    .white()
+                    .on_green()
+            }
             Source::_SomeApi {
                 base_url,
                 api_token,
@@ -366,7 +368,9 @@ impl TickerPhaseTemp for MatchSelect {
                 KeyCode::Char('1') => {
                     // TODO un hardcode this
                     let new_source = &mut Source::Cricinfo {
-                        match_id: Some("1385695".to_string()),
+                        // match_id: Some("1385695".to_string()),
+                        match_id: Some("1442214".to_string()),
+                        // pakistan-vs-bangladesh-2nd-test-1442214
                     };
                     let wicketick = WickeTick::new(new_source.clone(), None);
                     let (live_stream, stopper) = LiveStream::new(new_source.clone(), wicketick);
@@ -429,7 +433,14 @@ impl TickerPhaseTemp for LiveStream {
         let widget = match self.configuration {
             TickerConfiguration::MinimalTicker => {
                 if let Some(summary) = &self.wicketick.summary {
-                    let text = summary.display();
+                    let basic_text = summary.display();
+                    // let active_player_text = format!(
+                    //     "{}  ~|~  {}",
+                    //     summary.active_players.display_batters(),
+                    //     summary.active_players.display_bowlers()
+                    // );
+                    // let text = format!("{} ~|~ {}", basic_text, active_player_text);
+                    let text = format!("{} ~|~ {}", basic_text, "not_working");
                     Paragraph::new(text.clone()).white().on_black()
                 } else {
                     Paragraph::new("Loading...").white().on_black()
