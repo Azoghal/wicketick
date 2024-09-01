@@ -1,7 +1,5 @@
-use std::str::FromStr;
-
 use crate::errors::Error;
-use crate::wicketick::{self, ActivePlayers};
+use crate::wicketick::{self};
 use reqwest;
 use serde::Deserialize;
 
@@ -30,41 +28,41 @@ pub async fn get_match_summary(match_id: String) -> Result<wicketick::SimpleSumm
 #[derive(Deserialize, Debug)]
 struct Summary {
     live: LiveState,
-    centre: Centre,
+    // centre: Centre,
 }
 
-#[derive(Deserialize, Debug)]
-struct Centre {
-    pub batting: Vec<CentreBatter>,
-    pub bowling: Vec<CentreBowler>,
-}
+// #[derive(Deserialize, Debug)]
+// struct Centre {
+//     pub batting: Vec<Batter>,
+//     pub bowling: Vec<Bowler>,
+// }
 
 #[derive(Deserialize, Debug, Clone)]
-struct CentreBatter {
+struct Batter {
     balls_faced: u32,
     known_as: String,
-    live_current_name: String,
-    popular_name: String,
+    // live_current_name: String,
+    // popular_name: String,
     runs: u32,
 }
 
-impl CentreBatter {
+impl Batter {
     fn into(self) -> wicketick::Batter {
         wicketick::Batter::new(&self.known_as, self.runs, self.balls_faced)
     }
 }
 
 #[derive(Deserialize, Debug, Clone)]
-struct CentreBowler {
+struct Bowler {
     overs: String,
     known_as: String,
-    live_current_name: String,
-    popular_name: String,
+    // live_current_name: String,
+    // popular_name: String,
     conceded: u32,
     wickets: u32,
 }
 
-impl CentreBowler {
+impl Bowler {
     fn into(self) -> wicketick::Bowler {
         wicketick::Bowler::new(
             &self.known_as,
@@ -78,38 +76,38 @@ impl CentreBowler {
 #[derive(Deserialize, Debug)]
 struct LiveState {
     pub innings: Innings,
-    // pub batting: Batting,
-    // pub bowling: Bowling,
-    pub fow: Vec<FoW>,
-    pub status: String,
+    pub batting: Vec<Batter>,
+    pub bowling: Vec<Bowler>,
+    // pub fow: Vec<FoW>,
+    // pub status: String,
 }
 
 #[derive(Deserialize, Debug)]
 struct Innings {
     runs: i32,
     wickets: i32,
-    target: Option<i32>,
+    // target: Option<i32>,
     overs: String,
 }
 
-#[derive(Deserialize, Debug)]
-struct FoW {
-    fow_order: u8,
-}
+// #[derive(Deserialize, Debug)]
+// struct FoW {
+//     fow_order: u8,
+// }
 
-struct Team {}
+// struct Team {}
 
 impl Summary {
     pub fn into(self) -> wicketick::SimpleSummary {
-        let bowler_count = self.centre.bowling.len();
-        let batter_count = self.centre.batting.len();
+        let bowler_count = self.live.bowling.len();
+        let batter_count = self.live.batting.len();
 
         let active_players = match bowler_count + batter_count {
             4 => wicketick::ActivePlayers {
-                batter_one: Some(self.centre.batting[0].clone().into()),
-                batter_two: Some(self.centre.batting[1].clone().into()),
-                bowler_one: Some(self.centre.bowling[0].clone().into()),
-                bowler_two: Some(self.centre.bowling[1].clone().into()),
+                batter_one: Some(self.live.batting[0].clone().into()),
+                batter_two: Some(self.live.batting[1].clone().into()),
+                bowler_one: Some(self.live.bowling[0].clone().into()),
+                bowler_two: Some(self.live.bowling[1].clone().into()),
             },
             _ => wicketick::ActivePlayers::default(),
         };

@@ -17,19 +17,12 @@ use wicketick::{
 
 use std::{
     io::{stdout, Stdout},
-    sync::Arc,
     time::Duration,
 };
 use tokio::{
-    select,
-    sync::{
-        mpsc::{self, Receiver, Sender},
-        Mutex,
-    },
+    sync::mpsc::{self, Receiver, Sender},
     task::JoinHandle,
 };
-
-use rand::Rng;
 
 pub mod errors;
 use errors::Error;
@@ -86,7 +79,7 @@ fn phase_from_args<'a>(args: Args) -> Result<(TickerPhase, Option<JoinHandle<()>
                     };
 
                     // TODO so we can't stop this boy
-                    let (live_stream, stopper) = LiveStream::new(source, w);
+                    let (live_stream, stopper) = LiveStream::new(w);
 
                     Ok((TickerPhase::LiveStream(live_stream), Some(stopper)))
                 }
@@ -97,7 +90,7 @@ fn phase_from_args<'a>(args: Args) -> Result<(TickerPhase, Option<JoinHandle<()>
                     None,
                 )),
             },
-            _ => Err(errors::Error::Todo("not sure".to_string())),
+            // _ => Err(errors::Error::Todo("not sure".to_string())),
         },
         None => Ok((TickerPhase::SourceSelect(SourceSelect::new()), None)),
     }
@@ -341,14 +334,14 @@ impl TickerPhaseTemp for MatchSelect {
         terminal: &mut ratatui::terminal::Terminal<CrosstermBackend<Stdout>>,
     ) -> Result<(), Error> {
         let widget = match &self.source {
-            Source::Cricinfo { match_id } => {
+            Source::Cricinfo { match_id: _ } => {
                 Paragraph::new("1. pakistan-vs-bangladesh-2nd-test-1442214")
                     .white()
                     .on_green()
             }
             Source::_SomeApi {
-                base_url,
-                api_token,
+                base_url: _,
+                api_token: _,
             } => Paragraph::new(format!("Match select not implemented for {}", self.source))
                 .white()
                 .on_green(),
@@ -367,13 +360,13 @@ impl TickerPhaseTemp for MatchSelect {
                 KeyCode::Char('q') => should_close = true,
                 KeyCode::Char('1') => {
                     // TODO un hardcode this
-                    let new_source = &mut Source::Cricinfo {
+                    let new_source = Source::Cricinfo {
                         // match_id: Some("1385695".to_string()),
                         match_id: Some("1442214".to_string()),
                         // pakistan-vs-bangladesh-2nd-test-1442214
                     };
-                    let wicketick = WickeTick::new(new_source.clone(), None);
-                    let (live_stream, stopper) = LiveStream::new(new_source.clone(), wicketick);
+                    let wicketick = WickeTick::new(new_source, None);
+                    let (live_stream, stopper) = LiveStream::new(wicketick);
 
                     return Ok(HandleInputResponse {
                         should_close,
@@ -407,7 +400,6 @@ enum TickerConfiguration {
 
 // TODO rename
 struct LiveStream {
-    source: Source,
     wicketick: WickeTick,
     // wicketick_copy: Arc<Mutex<WickeTick>>,
     configuration: TickerConfiguration,
@@ -512,11 +504,10 @@ impl LiveStream {
 
 impl LiveStream {
     // new creates and returns a new phase, also starts the poller, and returns the JoinHandle needed to abort the poller
-    fn new(source: Source, wicketick: WickeTick) -> (Self, JoinHandle<()>) {
+    fn new(wicketick: WickeTick) -> (Self, JoinHandle<()>) {
         let (tx, rx) = mpsc::channel(1);
 
         let mut ls = LiveStream {
-            source,
             wicketick,
             configuration: TickerConfiguration::MinimalTicker,
             receiver: rx,

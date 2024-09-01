@@ -1,9 +1,7 @@
+use std::fmt;
 use std::str::FromStr;
-use std::sync::Arc;
-use std::{fmt, time};
 
-use tokio::sync::Mutex;
-use tokio::time::{sleep, Duration};
+use tokio::time;
 
 use crate::errors::Error;
 use crate::{cricinfo, errors};
@@ -19,8 +17,8 @@ impl fmt::Display for Source {
         match self {
             Source::Cricinfo { match_id } => write!(f, "CricInfo(match_id:{:?})", match_id),
             Source::_SomeApi {
-                base_url,
-                api_token,
+                base_url: _,
+                api_token: _,
             } => write!(f, "_SomeApi"),
         }
     }
