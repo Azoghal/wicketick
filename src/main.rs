@@ -451,13 +451,12 @@ impl TickerPhaseTemp for LiveStream {
             TickerConfiguration::MinimalTicker => {
                 if let Some(summary) = &self.wicketick.summary {
                     let basic_text = summary.display();
-                    // let active_player_text = format!(
-                    //     "{}  ~|~  {}",
-                    //     summary.active_players.display_batters(),
-                    //     summary.active_players.display_bowlers()
-                    // );
-                    // let text = format!("{} ~|~ {}", basic_text, active_player_text);
-                    let text = format!("{} ~|~ {}", basic_text, "not_working");
+                    let active_player_text = format!(
+                        "{}     {}",
+                        summary.active_players.display_batters(),
+                        summary.active_players.display_bowlers()
+                    );
+                    let text = format!("{}          {}", basic_text, active_player_text);
                     Paragraph::new(text.clone()).white().on_black()
                 } else {
                     Paragraph::new("Loading...").white().on_black()
@@ -506,7 +505,7 @@ impl LiveStream {
             loop {
                 match w.refetch().await {
                     Ok(mut summary) => {
-                        summary.debug_string = format!("Loop {}", loop_count);
+                        summary.debug_string = format!("(Ticks: {})", loop_count);
                         loop_count += 1;
                         sender.send(summary.clone()).await.unwrap();
                     }

@@ -48,6 +48,21 @@ fn parse_u32(bob: String) -> u32 {
 struct Summary {
     live: LiveState,
     // centre: Centre,
+    team: Vec<Team>,
+}
+
+impl Summary {
+    // return the known_as from the teams listing
+    fn lookup_player_name(&self, player_id: &str) -> String {
+        for team in &self.team {
+            for player in &team.player {
+                if player_id == player.player_id {
+                    return player.known_as.clone();
+                }
+            }
+        }
+        return "Unkown".to_string();
+    }
 }
 
 #[derive(Deserialize, Debug)]
@@ -61,36 +76,48 @@ struct LocalSummary {
 //     pub bowling: Vec<Bowler>,
 // }
 
+#[derive(Deserialize, Debug)]
+struct Player {
+    known_as: String,
+    popular_name: String,
+    player_id: String,
+}
+
 #[derive(Deserialize, Debug, Clone)]
 struct Batter {
     balls_faced: String,
-    known_as: String,
-    // live_current_name: String,
-    // popular_name: String,
+    live_current_name: String,
     runs: u32,
+    player_id: String,
+    team_id: u32,
 }
 
 impl Batter {
-    fn into(self) -> wicketick::Batter {
+    fn to_wicketick(self, name: &str) -> wicketick::Batter {
         let balls_faced = parse_u32(self.balls_faced);
-        wicketick::Batter::new(&self.known_as, self.runs, balls_faced)
+        wicketick::Batter::new(
+            name,
+            self.runs,
+            balls_faced,
+            self.live_current_name == "striker",
+        )
     }
 }
 
 #[derive(Deserialize, Debug, Clone)]
 struct Bowler {
     overs: String,
-    known_as: String,
-    // live_current_name: String,
-    // popular_name: String,
+    live_current_name: String,
     conceded: u32,
     wickets: u32,
+    player_id: String,
+    team_id: u32,
 }
 
 impl Bowler {
-    fn into(self) -> wicketick::Bowler {
+    fn to_wicketick(self, name: &str) -> wicketick::Bowler {
         wicketick::Bowler::new(
-            &self.known_as,
+            name,
             wicketick::Overs::from_str_with_default(&self.overs),
             self.wickets,
             self.conceded,
@@ -120,19 +147,34 @@ struct Innings {
 //     fow_order: u8,
 // }
 
-// struct Team {}
+#[derive(Deserialize, Debug)]
+struct Team {
+    player: Vec<Player>,
+    team_id: String,
+    team_name: String,
+    team_short_name: String,
+}
 
 impl Summary {
     pub fn into(self) -> wicketick::SimpleSummary {
         let bowler_count = self.live.bowling.len();
         let batter_count = self.live.batting.len();
 
+        let map_batter = |b: Batter| {
+            let id = b.clone().player_id;
+            Some(b.to_wicketick(&self.lookup_player_name(&id)))
+        };
+        let map_bowler = |b: Bowler| {
+            let id = b.clone().player_id;
+            Some(b.to_wicketick(&self.lookup_player_name(&id)))
+        };
+
         let active_players = match bowler_count + batter_count {
             4 => wicketick::ActivePlayers {
-                batter_one: Some(self.live.batting[0].clone().into()),
-                batter_two: Some(self.live.batting[1].clone().into()),
-                bowler_one: Some(self.live.bowling[0].clone().into()),
-                bowler_two: Some(self.live.bowling[1].clone().into()),
+                batter_one: map_batter(self.live.batting[0].clone()),
+                batter_two: map_batter(self.live.batting[1].clone()),
+                bowler_one: map_bowler(self.live.bowling[0].clone()),
+                bowler_two: map_bowler(self.live.bowling[1].clone()),
             },
             _ => wicketick::ActivePlayers::default(),
         };

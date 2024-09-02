@@ -91,7 +91,7 @@ impl SimpleSummary {
     // to get the relevant strings
     pub fn display(&self) -> String {
         if self.debug_string != "" {
-            return format!("{} {}", self.current_innings.display(), self.debug_string);
+            return format!("{} {}", self.debug_string, self.current_innings.display());
         }
         self.current_innings.display()
     }
@@ -173,7 +173,7 @@ impl ActivePlayers {
             Some(bowler) => bowler.display(),
             None => "".to_string(),
         };
-        format!("{} | {}", one_string, two_string)
+        format!("{}     {}", one_string, two_string)
     }
 
     pub fn display_batters(&self) -> String {
@@ -185,7 +185,7 @@ impl ActivePlayers {
             Some(batter) => batter.display(),
             None => "".to_string(),
         };
-        format!("{} | {}", one_string, two_string)
+        format!("{}     {}", one_string, two_string)
     }
 }
 
@@ -198,12 +198,12 @@ pub struct Batter {
 }
 
 impl Batter {
-    pub fn new(name: &str, runs: u32, balls_faced: u32) -> Self {
+    pub fn new(name: &str, runs: u32, balls_faced: u32, on_strike: bool) -> Self {
         Self {
             name: name.to_string(),
             runs,
             balls_faced,
-            on_strike: false,
+            on_strike,
         }
     }
 
@@ -268,7 +268,10 @@ impl Overs {
     pub fn from_str_with_default(s: &str) -> Self {
         match Self::from_str(s) {
             Ok(overs) => overs,
-            Err(_) => Self::default(),
+            Err(e) => {
+                eprintln!("error from str with defaults {}", e);
+                Self::default()
+            }
         }
     }
 }
@@ -277,11 +280,11 @@ impl FromStr for Overs {
     type Err = errors::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s.split_once(",") {
+        match s.split_once(".") {
             None => {
                 let o = (s
                     .parse::<u32>()
-                    .map_err(|_| errors::Error::ParseError("overs".to_string())))?;
+                    .map_err(|e| errors::Error::ParseError(e.to_string())))?;
                 Ok(Self {
                     full_overs: o,
                     spare_balls: 0,
@@ -290,10 +293,10 @@ impl FromStr for Overs {
             Some((o, b)) => {
                 let overs = (o
                     .parse::<u32>()
-                    .map_err(|_| errors::Error::ParseError("overs".to_string())))?;
+                    .map_err(|e| errors::Error::ParseError(e.to_string())))?;
                 let balls = (b
                     .parse::<u32>()
-                    .map_err(|_| errors::Error::ParseError("overs".to_string())))?;
+                    .map_err(|e| errors::Error::ParseError(e.to_string())))?;
                 Ok(Self {
                     full_overs: overs,
                     spare_balls: balls,
@@ -311,3 +314,5 @@ impl Default for Overs {
         }
     }
 }
+
+mod test {}
