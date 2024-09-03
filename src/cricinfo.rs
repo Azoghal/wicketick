@@ -136,9 +136,9 @@ struct LiveState {
 
 #[derive(Deserialize, Debug)]
 struct Innings {
-    runs: i32,
-    wickets: i32,
-    // target: Option<i32>,
+    runs: u32,
+    wickets: u32,
+    target: u32,
     overs: String,
 }
 
@@ -184,6 +184,10 @@ impl Summary {
                 runs: self.live.innings.runs as u32,
                 wickets: self.live.innings.wickets as u32,
                 overs: self.live.innings.overs,
+                target: match self.live.innings.target {
+                    0 => None,
+                    n => Some(n),
+                },
             },
             active_players,
             debug_string: "".to_string(),

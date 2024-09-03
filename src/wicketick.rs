@@ -90,9 +90,9 @@ impl SimpleSummary {
     // display should be called on each summary field by the configurations in order
     // to get the relevant strings
     pub fn display(&self) -> String {
-        if self.debug_string != "" {
-            return format!("{} {}", self.debug_string, self.current_innings.display());
-        }
+        // if self.debug_string != "" {
+        //     return format!("{} {}", self.debug_string, self.current_innings.display());
+        // }
         self.current_innings.display()
     }
 
@@ -116,6 +116,7 @@ pub struct Innings {
     pub runs: u32,
     pub wickets: u32,
     pub overs: String,
+    pub target: Option<u32>,
 }
 
 impl Innings {
@@ -124,7 +125,11 @@ impl Innings {
         let runs = self.runs;
         let wickets = self.wickets;
         let overs = &self.overs;
-        let text = format!("{}-{} {}", runs, wickets, overs);
+        let target = match self.target {
+            None => "".to_string(),
+            Some(t) => format!(" Target {}", t),
+        };
+        let text = format!("{}-{} {}{}", runs, wickets, overs, target);
         return text;
     }
 
@@ -139,6 +144,7 @@ impl Default for Innings {
             runs: 0,
             wickets: 0,
             overs: "0".to_string(),
+            target: None,
         }
     }
 }
