@@ -1,7 +1,10 @@
+use std::fmt;
+use std::marker::PhantomData;
+
 use crate::errors::Error;
 use crate::wicketick::{self};
 use reqwest;
-use serde::Deserialize;
+use serde::{Deserialize, Deserializer};
 
 // example match ids:
 // finished test match = 1385691
@@ -87,6 +90,7 @@ struct Player {
 struct Batter {
     balls_faced: String,
     live_current_name: String,
+    #[serde(deserialize_with = "deserialize_stringy_int")]
     runs: u32,
     player_id: String,
     team_id: u32,
@@ -108,6 +112,8 @@ impl Batter {
 struct Bowler {
     overs: String,
     live_current_name: String,
+    #[serde(deserialize_with = "deserialize_stringy_int")]
+    // TODO might not be needed but given batters runs needed it, probably a decent idea
     conceded: u32,
     wickets: u32,
     player_id: String,
@@ -193,4 +199,59 @@ impl Summary {
             debug_string: "".to_string(),
         };
     }
+}
+
+// reference https://serde.rs/stream-array.html
+// could make this genric where T (instead of u32) as long as we have a trait for parsing from string?
+fn deserialize_stringy_int<'de, D>(deserializer: D) -> Result<u32, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    struct StringyIntVisitor(PhantomData<fn() -> u32>);
+
+    impl<'de> serde::de::Visitor<'de> for StringyIntVisitor {
+        /// Return type of this visitor. This visitor computes the max of a
+        /// sequence of values of type T, so the type of the maximum is T.
+        type Value = u32;
+
+        fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+            formatter.write_str("an integer or a string of an integer")
+        }
+
+        fn visit_i64<E>(self, value: i64) -> Result<Self::Value, E>
+        where
+            E: serde::de::Error,
+        {
+            let x_safe: u32 = value
+                .try_into()
+                .map_err(|e| serde::de::Error::custom(format!("{:?}", e)))?;
+            Ok(x_safe)
+        }
+
+        fn visit_u64<E>(self, value: u64) -> Result<Self::Value, E>
+        where
+            E: serde::de::Error,
+        {
+            let x_safe: u32 = value
+                .try_into()
+                .map_err(|e| serde::de::Error::custom(format!("{:?}", e)))?;
+            Ok(x_safe)
+        }
+
+        fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
+        where
+            E: serde::de::Error,
+        {
+            let val = value
+                .parse::<u32>()
+                .map_err(|e| serde::de::Error::custom(format!("invalid integer: {:?}", e)))?;
+            Ok(val)
+        }
+    }
+
+    // Create the visitor and ask the deserializer to drive it. The
+    // deserializer will call visitor.visit_seq() if a seq is present in
+    // the input data.
+    let visitor = StringyIntVisitor(PhantomData);
+    deserializer.deserialize_any(visitor)
 }
