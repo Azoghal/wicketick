@@ -88,6 +88,7 @@ struct Player {
 
 #[derive(Deserialize, Debug, Clone)]
 struct Batter {
+    // #[serde(deserialize_with = "deserialize_stringy_int")]
     balls_faced: String,
     live_current_name: String,
     #[serde(deserialize_with = "deserialize_stringy_int")]
@@ -113,8 +114,8 @@ struct Bowler {
     overs: String,
     live_current_name: String,
     #[serde(deserialize_with = "deserialize_stringy_int")]
-    // TODO might not be needed but given batters runs needed it, probably a decent idea
     conceded: u32,
+    #[serde(deserialize_with = "deserialize_stringy_int")]
     wickets: u32,
     player_id: String,
     team_id: u32,

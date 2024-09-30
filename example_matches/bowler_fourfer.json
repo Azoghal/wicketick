@@ -1,0 +1,4127 @@
+{
+  "centre": {
+    "batting": [
+      {
+        "balls_faced": "51",
+        "batting_style": "lhb",
+        "control_percentage": 94,
+        "dismissal_name": "bowled",
+        "dot_ball_percentage": 49,
+        "known_as": "Yashasvi Jaiswal",
+        "live_current_name": "",
+        "match_award": 0,
+        "notout": 0,
+        "player_id": 102743,
+        "popular_name": "Jaiswal",
+        "preferred_shot": {
+          "balls_faced": "7",
+          "runs": "22",
+          "runs_summary": [
+            "2",
+            "0",
+            "0",
+            "0",
+            "4",
+            "0",
+            "1",
+            "0"
+          ],
+          "shot_name": "cover drive"
+        },
+        "runs": 72,
+        "runs_summary": [
+          "25",
+          "12",
+          "0",
+          "0",
+          "12",
+          "0",
+          "2",
+          "0"
+        ],
+        "scoring_shots": "26",
+        "strike_rate": "141.17",
+        "wagon_zone": [
+          {
+            "runs": 6,
+            "runs_summary": [
+              0,
+              2,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 3
+          },
+          {
+            "runs": 16,
+            "runs_summary": [
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 4
+          },
+          {
+            "runs": 22,
+            "runs_summary": [
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              1,
+              0
+            ],
+            "scoring_shots": 5
+          },
+          {
+            "runs": 3,
+            "runs_summary": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 3
+          },
+          {
+            "runs": 15,
+            "runs_summary": [
+              0,
+              5,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0
+            ],
+            "scoring_shots": 7
+          },
+          {
+            "runs": 1,
+            "runs_summary": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 1
+          },
+          {
+            "runs": 9,
+            "runs_summary": [
+              0,
+              1,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 3
+          },
+          {
+            "runs": 0,
+            "runs_summary": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 0
+          }
+        ]
+      },
+      {
+        "balls_faced": "43",
+        "batting_style": "rhb",
+        "control_percentage": 83,
+        "dismissal_name": "stumped",
+        "dot_ball_percentage": 20,
+        "known_as": "KL Rahul",
+        "live_current_name": "",
+        "match_award": 0,
+        "notout": 0,
+        "player_id": 60530,
+        "popular_name": "Rahul",
+        "preferred_shot": {
+          "balls_faced": "4",
+          "runs": "11",
+          "runs_summary": [
+            "0",
+            "1",
+            "1",
+            "0",
+            "2",
+            "0",
+            "0",
+            "0"
+          ],
+          "shot_name": "reverse_sweep"
+        },
+        "runs": 68,
+        "runs_summary": [
+          "9",
+          "22",
+          "3",
+          "0",
+          "7",
+          "0",
+          "2",
+          "0"
+        ],
+        "scoring_shots": "34",
+        "strike_rate": "158.13",
+        "wagon_zone": [
+          {
+            "runs": 0,
+            "runs_summary": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 0
+          },
+          {
+            "runs": 5,
+            "runs_summary": [
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 2
+          },
+          {
+            "runs": 27,
+            "runs_summary": [
+              0,
+              5,
+              2,
+              0,
+              3,
+              0,
+              1,
+              0
+            ],
+            "scoring_shots": 11
+          },
+          {
+            "runs": 10,
+            "runs_summary": [
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "scoring_shots": 5
+          },
+          {
+            "runs": 0,
+            "runs_summary": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 0
+          },
+          {
+            "runs": 6,
+            "runs_summary": [
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 6
+          },
+          {
+            "runs": 8,
+            "runs_summary": [
+              0,
+              4,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 5
+          },
+          {
+            "runs": 12,
+            "runs_summary": [
+              0,
+              2,
+              1,
+              0,
+              2,
+              0,
+              0,
+              0
+            ],
+            "scoring_shots": 5
+          }
+        ]
+      }
+    ],
+    "bowling": [
+      {
+        "bowling_style": "ob",
+        "conceded": 41,
+        "economy_rate": "6.15",
+        "known_as": "Mehidy Hasan Miraz",
+        "live_current_name": "current bowler",
+        "maidens": 0,
+        "match_award": 0,
+        "overall_lhb": {
+          "balls": 18,
+          "conceded": "19",
+          "economy_rate": "6.33",
+          "wickets": "1"
+        },
+        "overall_rhb": {
+          "balls": 22,
+          "conceded": "22",
+          "economy_rate": "6.00",
+          "wickets": "3"
+        },
+        "overs": "6.4",
+        "pitch_map_lhb": [
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              6,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              4
+            ],
+            [
+              5,
+              1,
+              5
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              5,
+              0,
+              3
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "pitch_map_rhb": [
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              2
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1,
+              2
+            ],
+            [
+              9,
+              0,
+              8
+            ],
+            [
+              9,
+              0,
+              3
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              4
+            ],
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "player_id": 70877,
+        "popular_name": "Mehidy",
+        "wickets": 4
+      },
+      {
+        "bowling_style": "sla",
+        "conceded": 78,
+        "economy_rate": "7.09",
+        "known_as": "Shakib Al Hasan",
+        "live_current_name": "previous bowler",
+        "maidens": 0,
+        "match_award": 0,
+        "overall_lhb": {
+          "balls": 15,
+          "conceded": "10",
+          "economy_rate": "4.00",
+          "wickets": "1"
+        },
+        "overall_rhb": {
+          "balls": 51,
+          "conceded": "68",
+          "economy_rate": "8.00",
+          "wickets": "3"
+        },
+        "overs": "11.0",
+        "pitch_map_lhb": [
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              3
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              4
+            ],
+            [
+              2,
+              0,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "pitch_map_rhb": [
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              26,
+              2,
+              17
+            ],
+            [
+              11,
+              0,
+              6
+            ],
+            [
+              7,
+              0,
+              3
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              4,
+              0,
+              1
+            ],
+            [
+              11,
+              1,
+              13
+            ],
+            [
+              6,
+              0,
+              7
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "player_id": 48277,
+        "popular_name": "Shakib",
+        "wickets": 4
+      }
+    ],
+    "common": {
+      "batting": [
+        {
+          "balls_faced": "51",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/340300/340309.1.png",
+          "known_as": "Yashasvi Jaiswal",
+          "notout": 0,
+          "player_id": 102743,
+          "popular_name": "Jaiswal",
+          "position": 1,
+          "position_group": "top",
+          "runs": 72
+        },
+        {
+          "balls_faced": "11",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/385800/385819.2.png",
+          "known_as": "Rohit Sharma",
+          "notout": 0,
+          "player_id": 48405,
+          "popular_name": "Rohit",
+          "position": 2,
+          "position_group": "top",
+          "runs": 23
+        },
+        {
+          "balls_faced": "36",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/322600/322697.1.png",
+          "known_as": "Shubman Gill",
+          "notout": 0,
+          "player_id": 95316,
+          "popular_name": "Gill",
+          "position": 3,
+          "position_group": "top",
+          "runs": 39
+        },
+        {
+          "balls_faced": "11",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/323000/323036.1.png",
+          "known_as": "Rishabh Pant",
+          "notout": 0,
+          "player_id": 86165,
+          "popular_name": "Pant",
+          "position": 4,
+          "position_group": "top",
+          "runs": 9
+        },
+        {
+          "balls_faced": "35",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/316600/316605.3.png",
+          "known_as": "Virat Kohli",
+          "notout": 0,
+          "player_id": 49752,
+          "popular_name": "Kohli",
+          "position": 5,
+          "position_group": "top",
+          "runs": 47
+        },
+        {
+          "balls_faced": "43",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/319900/319942.3.png",
+          "known_as": "KL Rahul",
+          "notout": 0,
+          "player_id": 60530,
+          "popular_name": "Rahul",
+          "position": 6,
+          "position_group": "top",
+          "runs": 68
+        },
+        {
+          "balls_faced": "13",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/316600/316600.2.png",
+          "known_as": "Ravindra Jadeja",
+          "notout": 0,
+          "player_id": 49247,
+          "popular_name": "Jadeja",
+          "position": 7,
+          "position_group": "top",
+          "runs": 8
+        },
+        {
+          "balls_faced": "4",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/316500/316521.2.png",
+          "known_as": "Ravichandran Ashwin",
+          "notout": 0,
+          "player_id": 12894,
+          "popular_name": "Ashwin",
+          "position": 8,
+          "position_group": "lower",
+          "runs": 1
+        },
+        {
+          "balls_faced": "5",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/356800/356814.1.png",
+          "known_as": "Akash Deep",
+          "notout": 0,
+          "player_id": 104922,
+          "popular_name": "Akash Deep",
+          "position": 9,
+          "position_group": "lower",
+          "runs": 12
+        },
+        {
+          "balls_faced": "1",
+          "hand": "",
+          "image_path": "/db/PICTURES/CMS/319900/319940.2.png",
+          "known_as": "Jasprit Bumrah",
+          "live_current_name": "non-striker",
+          "notout": 1,
+          "player_id": 70640,
+          "popular_name": "Bumrah",
+          "position": 10,
+          "position_group": "lower",
+          "runs": 1
+        }
+      ],
+      "bowling": [
+        {
+          "conceded": 66,
+          "hand": "right",
+          "image_path": "/db/PICTURES/CMS/323100/323172.1.png",
+          "known_as": "Hasan Mahmud",
+          "maidens": 0,
+          "overs": "6",
+          "pacespin": "pace",
+          "player_id": 85693,
+          "popular_name": "Mahmud",
+          "position": 1,
+          "wickets": 1
+        },
+        {
+          "conceded": 43,
+          "hand": "right",
+          "image_path": "/db/PICTURES/CMS/349300/349342.1.png",
+          "known_as": "Khaled Ahmed",
+          "maidens": 0,
+          "overs": "4",
+          "pacespin": "pace",
+          "player_id": 85937,
+          "popular_name": "Khaled",
+          "position": 2,
+          "wickets": 0
+        },
+        {
+          "conceded": 41,
+          "hand": "right",
+          "image_path": "/db/PICTURES/CMS/319700/319728.3.png",
+          "known_as": "Mehidy Hasan Miraz",
+          "live_current_name": "current bowler",
+          "maidens": 0,
+          "overs": "6.4",
+          "pacespin": "spin",
+          "player_id": 70877,
+          "popular_name": "Mehidy",
+          "position": 3,
+          "wickets": 4
+        },
+        {
+          "conceded": 54,
+          "hand": "left",
+          "image_path": "/db/PICTURES/CMS/316600/316675.1.png",
+          "known_as": "Taijul Islam",
+          "maidens": 0,
+          "overs": "7",
+          "pacespin": "spin",
+          "player_id": 59679,
+          "popular_name": "Taijul",
+          "position": 4,
+          "wickets": 0
+        },
+        {
+          "conceded": 78,
+          "hand": "left",
+          "image_path": "/db/PICTURES/CMS/316500/316581.1.png",
+          "known_as": "Shakib Al Hasan",
+          "live_current_name": "previous bowler",
+          "maidens": 0,
+          "overs": "11",
+          "pacespin": "spin",
+          "player_id": 48277,
+          "popular_name": "Shakib",
+          "position": 5,
+          "wickets": 4
+        }
+      ],
+      "innings": {
+        "control_percentage": 81,
+        "dot_ball_percentage": 35,
+        "event": 2,
+        "event_name": "declared",
+        "over_limit": "0.0",
+        "overs": "34.4",
+        "run_rate": "8.22",
+        "runs": 285,
+        "runs_summary": [
+          "75",
+          "90",
+          "6",
+          "0",
+          "28",
+          "0",
+          "11",
+          "0"
+        ],
+        "target": 0,
+        "wickets": 9
+      },
+      "innings_list": [
+        {
+          "current": 0,
+          "description": "Bangladesh 1st innings",
+          "descriptoin_short": "BAN 1st Inns",
+          "innings_number": 1,
+          "selected": 0,
+          "team_id": 25
+        },
+        {
+          "current": 1,
+          "description": "India 1st innings",
+          "descriptoin_short": "IND 1st Inns",
+          "innings_number": 2,
+          "selected": 1,
+          "team_id": 6
+        }
+      ],
+      "innings_number": "2",
+      "match": {
+        "control_percentage": 76,
+        "dot_ball_percentage": 65,
+        "result_string": "",
+        "runs_summary": [
+          "433",
+          "132",
+          "13",
+          "1",
+          "67",
+          "0",
+          "12",
+          "0"
+        ]
+      }
+    },
+    "fow": [
+      {
+        "notout": 0,
+        "overs": "3.5",
+        "player": [
+          {
+            "known_as": "Rohit Sharma",
+            "player_id": 48405,
+            "popular_name": "Rohit",
+            "runs": 23
+          },
+          {
+            "known_as": "Yashasvi Jaiswal",
+            "player_id": "102743",
+            "popular_name": "Jaiswal",
+            "runs": 30
+          }
+        ],
+        "runs": 55
+      },
+      {
+        "notout": 0,
+        "overs": "10.3",
+        "player": [
+          {
+            "known_as": "Yashasvi Jaiswal",
+            "player_id": "102743",
+            "popular_name": "Jaiswal",
+            "runs": 42
+          },
+          {
+            "known_as": "Shubman Gill",
+            "player_id": 95316,
+            "popular_name": "Gill",
+            "runs": 30
+          }
+        ],
+        "runs": 72
+      },
+      {
+        "notout": 0,
+        "overs": "2.5",
+        "player": [
+          {
+            "known_as": "Shubman Gill",
+            "player_id": "95316",
+            "popular_name": "Gill",
+            "runs": 9
+          },
+          {
+            "known_as": "Rishabh Pant",
+            "player_id": 86165,
+            "popular_name": "Pant",
+            "runs": 5
+          }
+        ],
+        "runs": 14
+      },
+      {
+        "notout": 0,
+        "overs": "2.1",
+        "player": [
+          {
+            "known_as": "Rishabh Pant",
+            "player_id": "86165",
+            "popular_name": "Pant",
+            "runs": 4
+          },
+          {
+            "known_as": "Virat Kohli",
+            "player_id": 49752,
+            "popular_name": "Kohli",
+            "runs": 13
+          }
+        ],
+        "runs": 18
+      },
+      {
+        "notout": 0,
+        "overs": "9.5",
+        "player": [
+          {
+            "known_as": "Virat Kohli",
+            "player_id": 49752,
+            "popular_name": "Kohli",
+            "runs": 34
+          },
+          {
+            "known_as": "KL Rahul",
+            "player_id": "60530",
+            "popular_name": "Rahul",
+            "runs": 51
+          }
+        ],
+        "runs": 87
+      },
+      {
+        "notout": 0,
+        "overs": "3.1",
+        "player": [
+          {
+            "known_as": "Ravindra Jadeja",
+            "player_id": 49247,
+            "popular_name": "Jadeja",
+            "runs": 8
+          },
+          {
+            "known_as": "KL Rahul",
+            "player_id": "60530",
+            "popular_name": "Rahul",
+            "runs": 15
+          }
+        ],
+        "runs": 23
+      },
+      {
+        "notout": 0,
+        "overs": "1.1",
+        "player": [
+          {
+            "known_as": "Ravichandran Ashwin",
+            "player_id": 12894,
+            "popular_name": "Ashwin",
+            "runs": 1
+          },
+          {
+            "known_as": "KL Rahul",
+            "player_id": "60530",
+            "popular_name": "Rahul",
+            "runs": 2
+          }
+        ],
+        "runs": 3
+      },
+      {
+        "notout": 0,
+        "overs": "0.4",
+        "player": [
+          {
+            "known_as": "KL Rahul",
+            "player_id": 60530,
+            "popular_name": "Rahul",
+            "runs": 0
+          },
+          {
+            "known_as": "Akash Deep",
+            "player_id": "104922",
+            "popular_name": "Akash Deep",
+            "runs": 12
+          }
+        ],
+        "runs": 12
+      },
+      {
+        "notout": 0,
+        "overs": "0.3",
+        "player": [
+          {
+            "known_as": "Akash Deep",
+            "player_id": "104922",
+            "popular_name": "Akash Deep",
+            "runs": 0
+          },
+          {
+            "known_as": "Jasprit Bumrah",
+            "player_id": 70640,
+            "popular_name": "Bumrah",
+            "runs": 1
+          }
+        ],
+        "runs": 1
+      }
+    ]
+  },
+  "comms": [
+    {
+      "ball": [
+        {
+          "comms_id": 4824175,
+          "dismissal": "Akash Deep c Khaled Ahmed b Mehidy Hasan Miraz 12 (5b 0x4 2x6) SR: 240.00",
+          "event": "OUT",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "35",
+          "overs_actual": "34.4",
+          "overs_unique": "34.04",
+          "players": "Mehidy Hasan Miraz to Akash Deep",
+          "post_text": "<p>\n<b>4.34pm</b> <b>With that, India have declared</b>! Sorry, Siraj. you won't get to smash some sixes here.\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "don't pitch it up to him! Akash Deep has smoked that down the ground but on this occasion it doesn't have the distance and a tumbling long-on gets under it"
+        },
+        {
+          "comms_id": 4824174,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "35",
+          "overs_actual": "34.3",
+          "overs_unique": "34.03",
+          "players": "Mehidy Hasan Miraz to Akash Deep",
+          "pre_text": "<p>\nAnkush Kulkarni: \"@Vishal1686 In case India declared, is the light OK for the play to continue? \" Right now, yes, but we have an hour left\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "a big slog sweep from Akash Deep, he misses it but there's an appeal for caught behind and Shanto has reviewed it. It stayed a bit low after pitching outside off and there's nothing on UltraEdge"
+        },
+        {
+          "comms_id": 4824173,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "35",
+          "overs_actual": "34.2",
+          "overs_unique": "34.02",
+          "players": "Mehidy Hasan Miraz to Bumrah",
+          "pre_text": "<p>\nRohit looks ready but India are not declaring yet. They lead by 51. Bumrah the new man\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "gets some width first ball and he happily steers over the covers for one"
+        },
+        {
+          "comms_id": 4824172,
+          "dismissal": "KL Rahul st &dagger;Litton Das b Mehidy Hasan Miraz 68 (43b 7x4 2x6) SR: 158.13",
+          "event": "OUT",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "35",
+          "overs_actual": "34.1",
+          "overs_unique": "34.01",
+          "players": "Mehidy Hasan Miraz to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Beaten by bounce as he comes down the track and <strong>KL Rahul is stumped</strong>! Mehidy smartly bowled that short and outside off after seeing Rahul dancing down. The batter tried to whack it on off but the bounce beat his bat, Litton collected that around chest height off a spinner and did well to take the bails off"
+        }
+      ],
+      "innings_number": 2,
+      "over_number": "35"
+    },
+    {
+      "ball": [
+        {
+          "comms_id": 4824171,
+          "dismissal": "",
+          "event": "SIX",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "34",
+          "overs_actual": "33.6",
+          "overs_unique": "33.06",
+          "players": "Shakib Al Hasan to Akash Deep",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "and one more! This is brute force. The fast bowler is using his strong shoulders and muscle to pack some power into these shots. He comes down the track and slaps it with disdain to the midwicket boundary for six more"
+        },
+        {
+          "comms_id": 4824170,
+          "dismissal": "",
+          "event": "SIX",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "34",
+          "overs_actual": "33.5",
+          "overs_unique": "33.05",
+          "players": "Shakib Al Hasan to Akash Deep",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "whacked this time! Fetch that, Kanpuriyas! Pitched up this time and he absolutely slammed it high and long down the ground"
+        },
+        {
+          "comms_id": 4824169,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "34",
+          "overs_actual": "33.4",
+          "overs_unique": "33.04",
+          "players": "Shakib Al Hasan to Akash Deep",
+          "pre_text": "<p>\nAkash Deep now. Will he take on Shakib?\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "a big heave first ball against the line for the leg side boundary. Misses it completely"
+        },
+        {
+          "comms_id": 4824168,
+          "dismissal": "R Ashwin  b Shakib Al Hasan 1 (4b 0x4 0x6) SR: 25.00",
+          "event": "OUT",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "34",
+          "overs_actual": "33.3",
+          "overs_unique": "33.03",
+          "players": "Shakib Al Hasan to Ashwin",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "some dying \"ooohhh\"s from the crowd as Ashwin <strong>loses off stump</strong>! Tried to make room, Shakib darted one flat towards off stump and he missed the fiercely intended cut"
+        },
+        {
+          "comms_id": 4824167,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "34",
+          "overs_actual": "33.2",
+          "overs_unique": "33.02",
+          "players": "Shakib Al Hasan to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "sweeps the ball coming in this time to fine leg for one"
+        },
+        {
+          "comms_id": 4824166,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "34",
+          "overs_actual": "33.1",
+          "overs_unique": "33.01",
+          "players": "Shakib Al Hasan to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Rahul makes room early and Shakib follows him, Rahul doesn't quite middle that shot punch"
+        }
+      ],
+      "batsman": [
+        {
+          "balls_faced": 3,
+          "fours": 0,
+          "live_current_name": "striker",
+          "player_id": "104922",
+          "runs": 12,
+          "sixes": 2
+        },
+        {
+          "balls_faced": 42,
+          "fours": 7,
+          "live_current_name": "non-striker",
+          "player_id": "60530",
+          "runs": 68,
+          "sixes": 2
+        }
+      ],
+      "bowler": [
+        {
+          "conceded": 78,
+          "live_current_name": "current bowler",
+          "maidens": 0,
+          "overs": "11.0",
+          "player_id": 48277,
+          "wickets": 4
+        },
+        {
+          "conceded": 40,
+          "live_current_name": "previous bowler",
+          "maidens": 0,
+          "overs": "6.0",
+          "player_id": 70877,
+          "wickets": 2
+        }
+      ],
+      "event_string": "13 runs",
+      "innings_number": 2,
+      "over_complete": 1,
+      "over_number": "34",
+      "required_string": "",
+      "runs": 284,
+      "team_id": 6,
+      "wickets": 7
+    },
+    {
+      "ball": [
+        {
+          "comms_id": 4824165,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "33",
+          "overs_actual": "32.6",
+          "overs_unique": "32.06",
+          "players": "Mehidy Hasan Miraz to Ashwin",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "flat on off stump and it's chipped to midwicket after a bounce"
+        },
+        {
+          "comms_id": 4824164,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "33",
+          "overs_actual": "32.5",
+          "overs_unique": "32.05",
+          "players": "Mehidy Hasan Miraz to Ashwin",
+          "pre_text": "<p>\nRohit is ready in his playing attire, tying his shoe laces. Declaration coming soon?\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "what's happening here! Ashwin goes for the reverse and Mehidy pitches it way down the leg side, now off side and Ashwin is left a little surprised"
+        },
+        {
+          "comms_id": 4824163,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "33",
+          "overs_actual": "32.4",
+          "overs_unique": "32.04",
+          "players": "Mehidy Hasan Miraz to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "96.2kmh, darts it just outside off, and Rahul pulls that with some power to deep midwicket. Mehidy is not going to give any flight here"
+        },
+        {
+          "comms_id": 4824162,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "33",
+          "overs_actual": "32.3",
+          "overs_unique": "32.03",
+          "players": "Mehidy Hasan Miraz to Ashwin",
+          "pre_text": "<p>\nAshwin now\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "off the mark with a deft and late touch fine on the off side for one towards deep third"
+        },
+        {
+          "comms_id": 4824161,
+          "dismissal": "RA Jadeja c Najmul Hossain Shanto b Mehidy Hasan Miraz 8 (13b 0x4 0x6) SR: 61.53",
+          "event": "OUT",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "33",
+          "overs_actual": "32.2",
+          "overs_unique": "32.02",
+          "players": "Mehidy Hasan Miraz to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "that's a strange dismissal, the umpire's finger has silenced the crowd and Jadeja is walking off! He came down the track and Mehidy did well to drop it short and hit him on the pad. The ball then lobbed to Shanto at cover and he's been given out caught. That must have been bat-pad then"
+        },
+        {
+          "comms_id": 4824160,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "33",
+          "overs_actual": "32.1",
+          "overs_unique": "32.01",
+          "players": "Mehidy Hasan Miraz to Jadeja",
+          "pre_text": "<p>\nMehidy comes in for Hasan, around the wicket to Jadeja with a slip\n</p>\n<p>\n\"This was the type of innings India wanted from KL on the 19th of November last year....\" Ouch! It's a team sport, Syed Kamran. India didn't lose only because of Rahul\n</p>\n<p>\nBj: \"Hi Vishal. No way we will get 75 mins of play here. So I believe India will try to score as much as they can today and then declare overnight.Your thoughts?\" Who knows India will declare today itself to bowl a little before stumps. Maybe for half hour?\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "towards the leg side with the angle, Jadeja goes for a paddle kind of sweep and misses"
+        }
+      ],
+      "batsman": [
+        {
+          "balls_faced": 3,
+          "fours": 0,
+          "live_current_name": "striker",
+          "player_id": "12894",
+          "runs": 1,
+          "sixes": 0
+        },
+        {
+          "balls_faced": 40,
+          "fours": 7,
+          "live_current_name": "non-striker",
+          "player_id": "60530",
+          "runs": 67,
+          "sixes": 2
+        }
+      ],
+      "bowler": [
+        {
+          "conceded": 40,
+          "live_current_name": "current bowler",
+          "maidens": 0,
+          "overs": "6.0",
+          "player_id": 70877,
+          "wickets": 2
+        },
+        {
+          "conceded": 65,
+          "live_current_name": "previous bowler",
+          "maidens": 0,
+          "overs": "10.0",
+          "player_id": 48277,
+          "wickets": 3
+        }
+      ],
+      "event_string": "2 runs",
+      "innings_number": 2,
+      "over_complete": 1,
+      "over_number": "33",
+      "required_string": "",
+      "runs": 271,
+      "team_id": 6,
+      "wickets": 6
+    },
+    {
+      "ball": [
+        {
+          "comms_id": 4824159,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "32",
+          "overs_actual": "31.6",
+          "overs_unique": "31.06",
+          "players": "Shakib Al Hasan to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "91.8kmh, reverse sweep for a single. When was the last time Jadeja did that?!"
+        },
+        {
+          "comms_id": 4824158,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "32",
+          "overs_actual": "31.5",
+          "overs_unique": "31.05",
+          "players": "Shakib Al Hasan to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "stays back for the turning ball and pushes to mid-on"
+        },
+        {
+          "comms_id": 4824157,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "32",
+          "overs_actual": "31.4",
+          "overs_unique": "31.04",
+          "players": "Shakib Al Hasan to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "comes down the track and gets the inside half of the bat to leg for one"
+        },
+        {
+          "comms_id": 4824156,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "32",
+          "overs_actual": "31.3",
+          "overs_unique": "31.03",
+          "players": "Shakib Al Hasan to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "stays back this time and whips the ball turning in square on the other side"
+        },
+        {
+          "comms_id": 4824155,
+          "dismissal": "",
+          "event": "2 runs",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "32",
+          "overs_actual": "31.2",
+          "overs_unique": "31.02",
+          "players": "Shakib Al Hasan to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "he comes out of the crease, Shakib pitches it wide and the batter manages to swat it away square on off for two"
+        },
+        {
+          "comms_id": 4824154,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "32",
+          "overs_actual": "31.1",
+          "overs_unique": "31.01",
+          "players": "Shakib Al Hasan to Jadeja",
+          "pre_text": "<p>\nHello hello! About 75 minutes to go for stumps with the extension. What's in store?\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "turning in slightly and he helps it to leg"
+        }
+      ],
+      "batsman": [
+        {
+          "balls_faced": 11,
+          "fours": 0,
+          "live_current_name": "striker",
+          "player_id": "49247",
+          "runs": 8,
+          "sixes": 0
+        },
+        {
+          "balls_faced": 39,
+          "fours": 7,
+          "live_current_name": "non-striker",
+          "player_id": "60530",
+          "runs": 66,
+          "sixes": 2
+        }
+      ],
+      "bowler": [
+        {
+          "conceded": 65,
+          "live_current_name": "current bowler",
+          "maidens": 0,
+          "overs": "10.0",
+          "player_id": 48277,
+          "wickets": 3
+        },
+        {
+          "conceded": 66,
+          "live_current_name": "previous bowler",
+          "maidens": 0,
+          "overs": "6.0",
+          "player_id": 85693,
+          "wickets": 1
+        }
+      ],
+      "event_string": "5 runs",
+      "innings_number": 2,
+      "over_complete": 1,
+      "over_number": "32",
+      "required_string": "",
+      "runs": 269,
+      "team_id": 6,
+      "wickets": 5
+    },
+    {
+      "ball": [
+        {
+          "comms_id": 4824153,
+          "dismissal": "",
+          "event": "SIX",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "31",
+          "overs_actual": "30.6",
+          "overs_unique": "30.06",
+          "players": "Hasan Mahmud to Rahul",
+          "post_text": "<p>\nHere's Vishal to see the day through\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "<strong>In the slot... and it carries over!</strong> Did not look like he had timed it well. Rahul looked like he miscued the the loft off the length ball but it had enough to clear long-on"
+        },
+        {
+          "comms_id": 4824151,
+          "dismissal": "",
+          "event": "2 runs",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "31",
+          "overs_actual": "30.5",
+          "overs_unique": "30.05",
+          "players": "Hasan Mahmud to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Length ball angling in on middle, punched through midwicket for two more"
+        },
+        {
+          "comms_id": 4824150,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "31",
+          "overs_actual": "30.4",
+          "overs_unique": "30.04",
+          "players": "Hasan Mahmud to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Length ball outside off, hangs back and guides it to deep third"
+        },
+        {
+          "comms_id": 4824149,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "31",
+          "overs_actual": "30.3",
+          "overs_unique": "30.03",
+          "players": "Hasan Mahmud to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Full on off, nails the drive straight back, long-on comes across to cut it off"
+        },
+        {
+          "comms_id": 4824148,
+          "dismissal": "",
+          "event": "FOUR",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "31",
+          "overs_actual": "30.2",
+          "overs_unique": "30.02",
+          "players": "Hasan Mahmud to Rahul",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Fetch that! Short and angling in, 140.kph, Rahul is up for it. Stands tall, swivels and pulls it through backward square leg"
+        },
+        {
+          "comms_id": 4824147,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "31",
+          "overs_actual": "30.1",
+          "overs_unique": "30.01",
+          "players": "Hasan Mahmud to Jadeja",
+          "post_text": "<p>\nPrevious fastest team 250 was in 34 overs by England in their 2nd innings vs Pakistan in 2022 in Rawalpindi\n</p>",
+          "pre_text": "<p>\nMahmud back on, around the wicket\n</p>",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Jadeja makes room and steers the length ball to deep third to <strong>bring up the 250, again the fastest in men's Tests</strong>"
+        }
+      ],
+      "batsman": [
+        {
+          "balls_faced": 38,
+          "fours": 7,
+          "live_current_name": "striker",
+          "player_id": "60530",
+          "runs": 65,
+          "sixes": 2
+        },
+        {
+          "balls_faced": 6,
+          "fours": 0,
+          "live_current_name": "non-striker",
+          "player_id": "49247",
+          "runs": 4,
+          "sixes": 0
+        }
+      ],
+      "bowler": [
+        {
+          "conceded": 66,
+          "live_current_name": "current bowler",
+          "maidens": 0,
+          "overs": "6.0",
+          "player_id": 85693,
+          "wickets": 1
+        },
+        {
+          "conceded": 60,
+          "live_current_name": "previous bowler",
+          "maidens": 0,
+          "overs": "9.0",
+          "player_id": 48277,
+          "wickets": 3
+        }
+      ],
+      "event_string": "15 runs",
+      "innings_number": 2,
+      "over_complete": 1,
+      "over_number": "31",
+      "required_string": "",
+      "runs": 264,
+      "team_id": 6,
+      "wickets": 5
+    },
+    {
+      "ball": [
+        {
+          "comms_id": 4824146,
+          "dismissal": "",
+          "event": "1 run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "30",
+          "overs_actual": "29.6",
+          "overs_unique": "29.06",
+          "players": "Shakib Al Hasan to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Backs away to make room, gets a full ball that follows him, eased it down to long-on"
+        },
+        {
+          "comms_id": 4824145,
+          "dismissal": "",
+          "event": "no run",
+          "innings_number": "2",
+          "is_tweet": 0,
+          "over_number": "30",
+          "overs_actual": "29.5",
+          "overs_unique": "29.05",
+          "players": "Shakib Al Hasan to Jadeja",
+          "speed_kph": "",
+          "speed_mph": "",
+          "text": "Lands it around off, clipped to midwicket"
+        }
+      ],
+      "batsman": [
+        {
+          "balls_faced": 4,
+          "fours": 0,
+          "live_current_name": "striker",
+          "player_id": "49247",
+          "runs": 2,
+          "sixes": 0
+        },
+        {
+          "balls_faced": 34,
+          "fours": 6,
+          "live_current_name": "non-striker",
+          "player_id": "60530",
+          "runs": 52,
+          "sixes": 1
+        }
+      ],
+      "bowler": [
+        {
+          "conceded": 60,
+          "live_current_name": "current bowler",
+          "maidens": 0,
+          "overs": "9.0",
+          "player_id": 48277,
+          "wickets": 3
+        },
+        {
+          "conceded": 54,
+          "live_current_name": "previous bowler",
+          "maidens": 0,
+          "overs": "7.0",
+          "player_id": 59679,
+          "wickets": 0
+        }
+      ],
+      "event_string": "3 runs",
+      "innings_number": 2,
+      "over_complete": 1,
+      "over_number": "30",
+      "required_string": "",
+      "runs": 249,
+      "team_id": 6,
+      "wickets": 5
+    }
+  ],
+  "description": "ICC World Test Championship, 2nd Test: India v Bangladesh at Kanpur, Sep 27-Oct 1, 2024",
+  "innings": [
+    {
+      "ball_limit": 0,
+      "balls": 446,
+      "batted": 1,
+      "batting_team_id": 25,
+      "bowling_team_id": 6,
+      "bpo": 6,
+      "byes": 4,
+      "event": 1,
+      "event_name": "all out",
+      "extras": 12,
+      "innings_number": "1",
+      "innings_numth": "1st",
+      "lead": 233,
+      "legbyes": 6,
+      "live_current": 0,
+      "live_current_name": null,
+      "minutes": null,
+      "noballs": 2,
+      "old_penalty_or_bonus": 0,
+      "over_limit": "0.0",
+      "over_limit_run_rate": null,
+      "over_split_limit": "0.0",
+      "overs": "74.2",
+      "overs_docked": 0,
+      "penalties": 0,
+      "penalties_field_end": 0,
+      "penalties_field_start": 0,
+      "run_rate": "3.13",
+      "runs": 233,
+      "target": 0,
+      "wickets": 10,
+      "wides": 0
+    },
+    {
+      "ball_limit": 0,
+      "balls": 208,
+      "batted": 1,
+      "batting_team_id": 6,
+      "bowling_team_id": 25,
+      "bpo": 6,
+      "byes": "3",
+      "event": 2,
+      "event_name": "declared",
+      "extras": "5",
+      "innings_number": "2",
+      "innings_numth": "1st",
+      "lead": 52,
+      "legbyes": 0,
+      "live_current": 1,
+      "live_current_name": "current innings",
+      "minutes": null,
+      "noballs": "2",
+      "old_penalty_or_bonus": 0,
+      "over_limit": "0.0",
+      "over_limit_run_rate": null,
+      "over_split_limit": "0.0",
+      "overs": "34.4",
+      "overs_docked": 0,
+      "penalties": 0,
+      "penalties_field_end": 0,
+      "penalties_field_start": 0,
+      "run_rate": "8.22",
+      "runs": "285",
+      "target": 0,
+      "wickets": "9",
+      "wides": 0
+    }
+  ],
+  "live": {
+    "batting": [
+      {
+        "balls_faced": "1",
+        "batting_averages": {
+          "batting_average": "7.34",
+          "batting_strike_rate": "43.79",
+          "class_card": "Test",
+          "high_score": " 34*",
+          "hundreds": "0",
+          "innings": "57",
+          "matches": "38",
+          "player_id": "70640",
+          "runs": "279"
+        },
+        "batting_averages_series": {
+          "batting_average": "7.44",
+          "batting_strike_rate": "36.81",
+          "high_score": "  26",
+          "hundreds": "0",
+          "innings": "11",
+          "matches": "8",
+          "player_id": "70640",
+          "runs": "67",
+          "series_type_name": "tournament"
+        },
+        "batting_position": 10,
+        "batting_pvp": {
+          "balls": "1",
+          "bowler_player_id": 70877,
+          "runs": "1"
+        },
+        "batting_recent": {
+          "balls": "1",
+          "over_span": 10,
+          "player_id": "70640",
+          "runs": "1"
+        },
+        "fours": "0",
+        "innings_number": "2",
+        "live_current": 2,
+        "live_current_name": "non-striker",
+        "minutes": "",
+        "player_id": "70640",
+        "runs": 1,
+        "sixes": "0",
+        "strike_rate": "100.00",
+        "team_id": 6
+      }
+    ],
+    "bowling": [
+      {
+        "bowling_averages": {
+          "bbi": "  7/58",
+          "bowling_average": "32.67",
+          "class_card": "Test",
+          "economy_rate": "3.14",
+          "five_wickets": "10",
+          "matches": "47",
+          "overs": "1883.4",
+          "player_id": "70877",
+          "wickets": "181"
+        },
+        "bowling_averages_series": {
+          "bbi": "  5/61",
+          "bowling_average": "28.83",
+          "economy_rate": "3.26",
+          "five_wickets": "1",
+          "matches": "8",
+          "player_id": "70877",
+          "series_type_name": "tournament",
+          "wickets": "30"
+        },
+        "bowling_scoring": {
+          "dots": "21",
+          "fours": "4",
+          "player_id": "70877",
+          "sixes": "2"
+        },
+        "bowling_spell": {
+          "balls": "10",
+          "conceded": "3",
+          "maidens": "0",
+          "overs": "1.4",
+          "spell": 2,
+          "wickets": "3"
+        },
+        "conceded": "41",
+        "economy_rate": "6.15",
+        "innings_number": "2",
+        "live_current": 1,
+        "live_current_name": "current bowler",
+        "maidens": "0",
+        "noballs": 0,
+        "overs": "6.4",
+        "player_id": "70877",
+        "team_id": 25,
+        "wickets": "4",
+        "wides": 0
+      },
+      {
+        "bowling_averages": {
+          "bbi": "  7/36",
+          "bowling_average": "31.65",
+          "class_card": "Test",
+          "economy_rate": "2.98",
+          "five_wickets": "19",
+          "matches": "71",
+          "overs": "2609.3",
+          "player_id": "48277",
+          "wickets": "246"
+        },
+        "bowling_averages_series": {
+          "bbi": "  4/78",
+          "bowling_average": "42.15",
+          "economy_rate": "3.72",
+          "five_wickets": "0",
+          "matches": "5",
+          "player_id": "48277",
+          "series_type_name": "tournament",
+          "wickets": "13"
+        },
+        "bowling_scoring": {
+          "dots": "20",
+          "fours": "6",
+          "player_id": "48277",
+          "sixes": "2"
+        },
+        "bowling_spell": {
+          "balls": "66",
+          "conceded": "78",
+          "maidens": "0",
+          "overs": "11.0",
+          "spell": 1,
+          "wickets": "4"
+        },
+        "conceded": "78",
+        "economy_rate": "7.09",
+        "innings_number": "2",
+        "live_current": 2,
+        "live_current_name": "previous bowler",
+        "maidens": "0",
+        "noballs": 0,
+        "overs": "11.0",
+        "player_id": "48277",
+        "team_id": 25,
+        "wickets": "4",
+        "wides": 0
+      }
+    ],
+    "break": "Innings break - Day 4",
+    "field_restrict": [],
+    "fow": [
+      {
+        "fow_order": 8,
+        "fow_overs": "34.4",
+        "fow_runs": 285,
+        "fow_wickets": 9,
+        "innings_number": 2,
+        "live_current": 2,
+        "live_current_name": "last wicket",
+        "opposition_id": 25,
+        "out_player": {
+          "balls_faced": 5,
+          "dismissal_string": "c Khaled Ahmed b Mehidy Hasan Miraz",
+          "fours": 0,
+          "minutes": "",
+          "player_id": 104922,
+          "runs": 12,
+          "sixes": 2,
+          "strike_rate": "240.00"
+        },
+        "partnership_overs": "0.3",
+        "partnership_rate": 2,
+        "partnership_runs": 1,
+        "partnership_wicket": 9,
+        "partnership_wicket_name": "9th",
+        "player": [
+          {
+            "fow_runs": 1,
+            "partnership_runs": 1,
+            "player_id": 70640
+          },
+          {
+            "fow_runs": 12,
+            "partnership_runs": 0,
+            "player_id": 104922
+          }
+        ],
+        "player_id": 104922,
+        "team_id": 6
+      }
+    ],
+    "innings": {
+      "ball_limit": 0,
+      "balls": 208,
+      "batted": 1,
+      "batting_team_id": 6,
+      "bowling_team_id": 25,
+      "bpo": 6,
+      "event": 2,
+      "event_name": "declared",
+      "innings_number": "2",
+      "lead": "52",
+      "live_current": 1,
+      "live_current_name": "current innings",
+      "over_limit": "0.0",
+      "over_limit_run_rate": null,
+      "over_split_limit": "0.0",
+      "overs": "34.4",
+      "remaining_balls": 0,
+      "remaining_overs": "0.0",
+      "remaining_wickets": "1",
+      "required_run_rate": null,
+      "run_rate": "8.22",
+      "runs": 285,
+      "target": 0,
+      "team_id": 6,
+      "wickets": 9
+    },
+    "innings_recent": [
+      {
+        "balls": "60",
+        "innings_number": 2,
+        "over_span": 10,
+        "run_rate": "8.3",
+        "runs": "83",
+        "wickets": "5"
+      }
+    ],
+    "recent_overs": [
+      [
+        {
+          "ball": "&bull;",
+          "ball_number": 1,
+          "extras": "",
+          "over_number": 32
+        },
+        {
+          "ball": 2,
+          "ball_number": 2,
+          "extras": "",
+          "over_number": "32"
+        },
+        {
+          "ball": 1,
+          "ball_number": 3,
+          "extras": "",
+          "over_number": "32"
+        },
+        {
+          "ball": 1,
+          "ball_number": 4,
+          "extras": "",
+          "over_number": "32"
+        },
+        {
+          "ball": "&bull;",
+          "ball_number": 5,
+          "extras": "",
+          "over_number": "32"
+        },
+        {
+          "ball": 1,
+          "ball_number": 6,
+          "extras": "",
+          "over_number": "32"
+        }
+      ],
+      [
+        {
+          "ball": "&bull;",
+          "ball_number": 1,
+          "extras": "",
+          "over_number": "33"
+        },
+        {
+          "ball": "W",
+          "ball_number": 2,
+          "extras": "",
+          "over_number": "33"
+        },
+        {
+          "ball": 1,
+          "ball_number": 3,
+          "extras": "",
+          "over_number": "33"
+        },
+        {
+          "ball": 1,
+          "ball_number": 4,
+          "extras": "",
+          "over_number": "33"
+        },
+        {
+          "ball": "&bull;",
+          "ball_number": 5,
+          "extras": "",
+          "over_number": "33"
+        },
+        {
+          "ball": "&bull;",
+          "ball_number": 6,
+          "extras": "",
+          "over_number": "33"
+        }
+      ],
+      [
+        {
+          "ball": "&bull;",
+          "ball_number": 1,
+          "extras": "",
+          "over_number": "34"
+        },
+        {
+          "ball": 1,
+          "ball_number": 2,
+          "extras": "",
+          "over_number": "34"
+        },
+        {
+          "ball": "W",
+          "ball_number": 3,
+          "extras": "",
+          "over_number": "34"
+        },
+        {
+          "ball": "&bull;",
+          "ball_number": 4,
+          "extras": "",
+          "over_number": "34"
+        },
+        {
+          "ball": 6,
+          "ball_number": 5,
+          "extras": "",
+          "over_number": "34"
+        },
+        {
+          "ball": 6,
+          "ball_number": 6,
+          "extras": "",
+          "over_number": "34"
+        }
+      ],
+      [
+        {
+          "ball": "W",
+          "ball_number": 1,
+          "extras": "",
+          "over_number": "35"
+        },
+        {
+          "ball": 1,
+          "ball_number": 2,
+          "extras": "",
+          "over_number": "35"
+        },
+        {
+          "ball": "&bull;",
+          "ball_number": 3,
+          "extras": "",
+          "over_number": "35"
+        },
+        {
+          "ball": "W",
+          "ball_number": 4,
+          "extras": "",
+          "over_number": "35"
+        }
+      ]
+    ],
+    "review": [
+      {
+        "remaining": 3,
+        "requests_permitted": 3,
+        "successful": 2,
+        "team_id": "6",
+        "unsuccessful": 0
+      },
+      {
+        "remaining": 1,
+        "requests_permitted": 3,
+        "successful": 0,
+        "team_id": "25",
+        "unsuccessful": 2
+      }
+    ],
+    "status": "India lead by 52 runs with 1 wicket remaining in the 1st innings"
+  },
+  "live_clipper": {},
+  "live_video": {},
+  "match": {
+    "actual_days": "4",
+    "adjusted": "0",
+    "amount": "0",
+    "amount_balls": "0",
+    "amount_name": "",
+    "amount_type": "0",
+    "away_team_id": "25",
+    "ballbyball_source": "feedback",
+    "batting_first_team_id": "25",
+    "bitly_hash": "",
+    "bpo": "6",
+    "cancelled_match": "N",
+    "cms_match_title": "2nd Test",
+    "commentary_source": "cms",
+    "continent_id": "2",
+    "continent_name": "Asia",
+    "country_abbreviation": "IND",
+    "country_filename": "IND",
+    "country_id": "6",
+    "country_name": "India",
+    "current_summary": "India 285/9d (34.4 ov, JJ Bumrah 1*, Mehidy Hasan Miraz 4/41) - Innings break",
+    "current_summary_abbreviation": "IND 285/9d (34.4 ov, JJ Bumrah 1*, Mehidy Hasan Miraz 4/41) - Innings break",
+    "date": "Sep 27-Oct 1, 2024",
+    "date_string": "27,28,29,30 September, 1 October 2024",
+    "days_extended": "0",
+    "end_date": "Oct 1, 2024",
+    "end_date_raw": "2024-10-01",
+    "floodlit": "1",
+    "floodlit_name": "day match",
+    "followon": "0",
+    "general_class_card": "First-class",
+    "general_class_id": "4",
+    "general_class_name": "First-class matches",
+    "general_number": "",
+    "general_valid": "1",
+    "gmt_difference": "+0530",
+    "ground_id": "419",
+    "ground_latitude": "26.482407",
+    "ground_longitude": "80.347679",
+    "ground_name": "Green Park, Kanpur",
+    "ground_object_id": "58204",
+    "ground_small_name": "Kanpur",
+    "hawkeye_source": "",
+    "head2head_source": "feedback",
+    "home_team_id": "6",
+    "hours_string": "9.30 start, Lunch 11.45-12.25, Tea 14.40-15.00, Close 17.00",
+    "international_class_card": "Test",
+    "international_class_id": "1",
+    "international_class_name": "Test matches",
+    "international_number": "002552",
+    "international_valid": "1",
+    "legacy_url": "/db/ARCHIVE/2024-25/BDESH_IN_IND/SCORECARDS/BDESH_IND_T2_27SEP-01OCT2024",
+    "live_commentator": "@Vishal1686",
+    "live_companion": "N",
+    "live_day_number": "4",
+    "live_innings_number": "2",
+    "live_match": "Y",
+    "live_note": "",
+    "live_overs_remaining": "21.2",
+    "live_overs_unique": "34.04",
+    "live_scorer": "Ranjith P",
+    "live_session_number": "3",
+    "live_state": "Innings break",
+    "match_clock": "",
+    "match_day_countdown": "0",
+    "match_minute_countdown": "",
+    "match_path": "",
+    "match_status": "current",
+    "neutral_match": "0",
+    "next_datetime_gmt": "2024-09-30 04:00:00",
+    "next_datetime_local": "2024-09-30 09:30:00",
+    "player_rating": "N",
+    "present_date_gmt": "2024-09-30",
+    "present_date_local": "2024-09-30",
+    "present_datetime_gmt": "2024-09-30 11:05:00",
+    "present_datetime_local": "2024-09-30 16:35:00",
+    "present_time_gmt": "11:05:00",
+    "present_time_local": "16:35:00",
+    "rain_rule": "",
+    "rain_rule_name": "",
+    "rating_promo": "",
+    "reduced": "0",
+    "reserve_days_used": "0",
+    "result": "0",
+    "result_name": "",
+    "result_short_name": "",
+    "schedule_note": "",
+    "scheduled_days": "5",
+    "scheduled_innings": "2",
+    "scheduled_overs": "0",
+    "scorecard_source": "feedback",
+    "scribble_id": "0",
+    "season": "2024/25",
+    "site_id": "1",
+    "site_name": "Global",
+    "start_date": "Sep 27, 2024",
+    "start_date_gmt_offset": "0",
+    "start_date_raw": "2024-09-27",
+    "start_datetime_gmt": "2024-09-27 04:00:00",
+    "start_datetime_gmt_raw": "2024-09-27 04:00:00",
+    "start_datetime_local": "2024-09-27 09:30:00",
+    "start_time_gmt": "04:00:00",
+    "start_time_local": "09:30:00",
+    "sub_class_id": "0",
+    "team1_abbreviation": "IND",
+    "team1_class_id": "1",
+    "team1_country_id": "6",
+    "team1_filename": "IND",
+    "team1_id": "6",
+    "team1_logo_alt_id": "",
+    "team1_logo_espncdn": "Y",
+    "team1_logo_object_id": "1436347",
+    "team1_name": "India",
+    "team1_object_id": "6",
+    "team1_short_name": "India",
+    "team2_abbreviation": "BAN",
+    "team2_class_id": "1",
+    "team2_country_id": "25",
+    "team2_filename": "BDESH",
+    "team2_id": "25",
+    "team2_logo_alt_id": "",
+    "team2_logo_espncdn": "Y",
+    "team2_logo_object_id": "1321180",
+    "team2_name": "Bangladesh",
+    "team2_object_id": "25",
+    "team2_short_name": "Bangladesh",
+    "tiebreaker_name": "",
+    "tiebreaker_team_id": "0",
+    "tiebreaker_type": "0",
+    "time_zone": "Asia/Kolkata",
+    "toss_choice_team_id": "0",
+    "toss_decision": "2",
+    "toss_decision_name": "field",
+    "toss_winner_team_id": "6",
+    "town_aka": "Cawnpore",
+    "town_area": "",
+    "town_id": "630",
+    "town_name": "Kanpur",
+    "tz_short_name": "IST",
+    "url_component": "ci",
+    "watch_espn_id": "0",
+    "weather_location_code": "INXX0067",
+    "winner_team_id": "0"
+  },
+  "match_card": "<li><div class=\"score-table-box\"><table width=\"100%\" class=\"score-stats-table\"><tr class=\"tr-heading\"><th scope=\"col\" colspan=\"2\" class=\"text-left\">Batting</th><th scope=\"col\">R</th><th scope=\"col\">B</th><th scope=\"col\">4</th><th scope=\"col\">6</th></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/1151278.html\" title=\"view the player profile for Yashasvi Jaiswal\" target=\"_blank\">YBK Jaiswal</a></td><td class=\"text-left\">bowled</td><td>72</td><td>51</td><td>12</td><td>2</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/34102.html\" target=\"_blank\" title=\"view the player profile for Rohit Sharma\">RG Sharma</a></td><td class=\"text-left\">bowled</td><td>23</td><td>11</td><td>1</td><td>3</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/1070173.html\" target=\"_blank\" title=\"view the player profile for Shubman Gill\">Shubman Gill</a></td><td class=\"text-left\">caught</td><td>39</td><td>36</td><td>4</td><td>1</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/931581.html\" title=\"view the player profile for Rishabh Pant\" target=\"_blank\">RR Pant</a></td><td class=\"text-left\">caught</td><td>9</td><td>11</td><td>0</td><td>0</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/253802.html\" target=\"_blank\" title=\"view the player profile for Virat Kohli\">V Kohli</a></td><td class=\"text-left\">bowled</td><td>47</td><td>35</td><td>4</td><td>1</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/422108.html\" title=\"view the player profile for KL Rahul\" target=\"_blank\">KL Rahul</a></td><td class=\"text-left\">stumped</td><td>68</td><td>43</td><td>7</td><td>2</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/234675.html\" title=\"view the player profile for Ravindra Jadeja\" target=\"_blank\">RA Jadeja</a></td><td class=\"text-left\">caught</td><td>8</td><td>13</td><td>0</td><td>0</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/26421.html\" title=\"view the player profile for Ravichandran Ashwin\" target=\"_blank\">R Ashwin</a></td><td class=\"text-left\">bowled</td><td>1</td><td>4</td><td>0</td><td>0</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/1176959.html\" target=\"_blank\" title=\"view the player profile for Akash Deep\">Akash Deep</a></td><td class=\"text-left\">caught</td><td>12</td><td>5</td><td>0</td><td>2</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/625383.html\" title=\"view the player profile for Jasprit Bumrah\" target=\"_blank\">JJ Bumrah</a></td><td class=\"text-left\">not out</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/940973.html\" title=\"view the player profile for Mohammed Siraj\" target=\"_blank\">Mohammed Siraj</a></td><td class=\"text-left\"></td><td></td><td></td><td></td><td></td></tr><tr><td class=\"text-left\">Extras</td><td class=\"text-left\">(b 3, nb 2)</td><td>5</td><td></td><td></td><td></td></tr><tr><td class=\"text-left\">Total</td><td class=\"text-left\">(9 wkts dec; 34.4 ovs)</td><td>285</td><td></td><td></td><td></td></tr></table></div></li><li><div class=\"score-table-box\"><table width=\"100%\" class=\"score-stats-table\"><tr class=\"tr-heading\"><th scope=\"col\" class=\"text-left\">Bowling</th><th scope=\"col\">O</th><th scope=\"col\">M</th><th scope=\"col\">R</th><th scope=\"col\">W</th><th scope=\"col\">Econ</th><th scope=\"col\"></th></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/926629.html\" title=\"view the player profile for Hasan Mahmud\" target=\"_blank\">Hasan Mahmud</a></td><td>6</td><td>0</td><td>66</td><td>1</td><td>11.00</td><td class=\"text-left\">(1nb)</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/927619.html\" target=\"_blank\" title=\"view the player profile for Khaled Ahmed\">Khaled Ahmed</a></td><td>4</td><td>0</td><td>43</td><td>0</td><td>10.75</td><td class=\"text-left\">(1nb)</td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/629063.html\" target=\"_blank\" title=\"view the player profile for Mehidy Hasan Miraz\">Mehidy Hasan Miraz</a></td><td>6.4</td><td>0</td><td>41</td><td>4</td><td>6.15</td><td class=\"text-left\"></td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/401057.html\" target=\"_blank\" title=\"view the player profile for Taijul Islam\">Taijul Islam</a></td><td>7</td><td>0</td><td>54</td><td>0</td><td>7.71</td><td class=\"text-left\"></td></tr><tr><td class=\"text-left\"><a href=\"/ci/content/player/56143.html\" title=\"view the player profile for Shakib Al Hasan\" target=\"_blank\">Shakib Al Hasan</a></td><td>11</td><td>0</td><td>78</td><td>4</td><td>7.09</td><td class=\"text-left\"></td></tr></table></div></li><li><div class=\"score-table-box\"><table width=\"100%\" class=\"score-stats-table\"><caption>Partnerships</caption><tr class=\"tr-heading\"><th>Wkt</th><th>Runs</th><th colspan=\"2\" class=\"text-left\">Players</th></tr><tr><td>1st</td><td>55</td><td class=\"text-left\">RG Sharma 23 </td><td class=\"text-left\">YBK Jaiswal 30 </td></tr><tr><td>2nd</td><td>72</td><td class=\"text-left\">YBK Jaiswal 42 </td><td class=\"text-left\">Shubman Gill 30 </td></tr><tr><td>3rd</td><td>14</td><td class=\"text-left\">Shubman Gill 9 </td><td class=\"text-left\">RR Pant 5 </td></tr><tr><td>4th</td><td>18</td><td class=\"text-left\">RR Pant 4 </td><td class=\"text-left\">V Kohli 13 </td></tr><tr><td>5th</td><td>87</td><td class=\"text-left\">V Kohli 34 </td><td class=\"text-left\">KL Rahul 51 </td></tr><tr><td>6th</td><td>23</td><td class=\"text-left\">RA Jadeja 8 </td><td class=\"text-left\">KL Rahul 15 </td></tr><tr><td>7th</td><td>3</td><td class=\"text-left\">R Ashwin 1 </td><td class=\"text-left\">KL Rahul 2 </td></tr><tr><td>8th</td><td>12</td><td class=\"text-left\">KL Rahul 0 </td><td class=\"text-left\">Akash Deep 12 </td></tr><tr><td>9th</td><td>1</td><td class=\"text-left\">Akash Deep 0 </td><td class=\"text-left\">JJ Bumrah 1 </td></tr></table></div></li><li><div class=\"score-table-box\"><table width=\"100%\" class=\"score-stats-table\"><caption>Mehidy Hasan Miraz 6.4-0-41-4</caption><tr class=\"tr-heading\"><th scope=\"col\" class=\"text-left\">v Batsman</th><th scope=\"col\"></th><th scope=\"col\">Dot</th><th scope=\"col\">4</th><th scope=\"col\">6</th><th scope=\"col\">R</th><th scope=\"col\">B</th><th scope=\"col\">SR</th></tr><tr><td class=\"text-left\">YBK Jaiswal</td><td class=\"text-left\"></td><td>8</td><td>2</td><td>1</td><td>19</td><td>16</td><td>118.75</td></tr><tr><td class=\"text-left\">RG Sharma</td><td class=\"text-left\">bowled</td><td>4</td><td>1</td><td>0</td><td>4</td><td>5</td><td>80.00</td></tr><tr><td class=\"text-left\">Shubman Gill</td><td class=\"text-left\"></td><td>2</td><td>1</td><td>1</td><td>15</td><td>9</td><td>166.66</td></tr><tr><td class=\"text-left\">KL Rahul</td><td class=\"text-left\">stumped</td><td>1</td><td>0</td><td>0</td><td>1</td><td>2</td><td>50.00</td></tr><tr><td class=\"text-left\">RA Jadeja</td><td class=\"text-left\">caught</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0.00</td></tr><tr><td class=\"text-left\">R Ashwin</td><td class=\"text-left\"></td><td>2</td><td>0</td><td>0</td><td>1</td><td>3</td><td>33.33</td></tr><tr><td class=\"text-left\">Akash Deep</td><td class=\"text-left\">caught</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0.00</td></tr><tr><td class=\"text-left\">JJ Bumrah</td><td class=\"text-left\"></td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>100.00</td></tr></table></div></li><li><div class=\"score-table-box\"><table width=\"100%\" class=\"score-stats-table\"><caption>Shakib Al Hasan 11.0-0-78-4</caption><tr class=\"tr-heading\"><th scope=\"col\" class=\"text-left\">v Batsman</th><th scope=\"col\"></th><th scope=\"col\">Dot</th><th scope=\"col\">4</th><th scope=\"col\">6</th><th scope=\"col\">R</th><th scope=\"col\">B</th><th scope=\"col\">SR</th></tr><tr><td class=\"text-left\">Shubman Gill</td><td class=\"text-left\">caught</td><td>6</td><td>2</td><td>0</td><td>10</td><td>10</td><td>100.00</td></tr><tr><td class=\"text-left\">RR Pant</td><td class=\"text-left\">caught</td><td>2</td><td>0</td><td>0</td><td>4</td><td>6</td><td>66.66</td></tr><tr><td class=\"text-left\">V Kohli</td><td class=\"text-left\">bowled</td><td>3</td><td>1</td><td>0</td><td>20</td><td>18</td><td>111.11</td></tr><tr><td class=\"text-left\">KL Rahul</td><td class=\"text-left\"></td><td>3</td><td>3</td><td>0</td><td>26</td><td>19</td><td>136.84</td></tr><tr><td class=\"text-left\">RA Jadeja</td><td class=\"text-left\"></td><td>4</td><td>0</td><td>0</td><td>6</td><td>9</td><td>66.66</td></tr><tr><td class=\"text-left\">R Ashwin</td><td class=\"text-left\">bowled</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.00</td></tr><tr><td class=\"text-left\">Akash Deep</td><td class=\"text-left\"></td><td>1</td><td>0</td><td>2</td><td>12</td><td>3</td><td>400.00</td></tr></table></div></li>",
+  "middle_column": "",
+  "official": [
+    {
+      "age_days": 184,
+      "age_years": 51,
+      "alpha_name": "BROWN,CM",
+      "batting_hand": "right-hand batter",
+      "bowling_hand": "right-arm bowler",
+      "bowling_pacespin": "pace bowler",
+      "card_long": "CM Brown",
+      "card_qualifier": "",
+      "card_short": "CM Brown",
+      "dob": "1973-03-27",
+      "image_id": null,
+      "known_as": "Chris Brown",
+      "match_player_id": 3056778,
+      "mobile_name": "Brown",
+      "object_id": 36352,
+      "player_id": "18888",
+      "player_name_id": 29523,
+      "player_type": 2,
+      "player_type_name": "umpire",
+      "popular_name": "Brown",
+      "portrait_alt_id": "1",
+      "portrait_object_id": 547526,
+      "status_id": 3,
+      "team_abbreviation": "NZ",
+      "team_id": 5,
+      "team_name": "New Zealand",
+      "team_short_name": "New Zealand"
+    },
+    {
+      "age_days": 196,
+      "age_years": 51,
+      "alpha_name": "KETTLEBOROUGH,RA",
+      "batting_hand": "left-hand batter",
+      "bowling_hand": "right-arm bowler",
+      "bowling_pacespin": "pace bowler",
+      "card_long": "RA Kettleborough",
+      "card_qualifier": "",
+      "card_short": "RA Kettleborough",
+      "dob": "1973-03-15",
+      "image_id": null,
+      "known_as": "Richard Kettleborough",
+      "match_player_id": 3056777,
+      "mobile_name": "",
+      "object_id": 15872,
+      "player_id": "4502",
+      "player_name_id": 11068,
+      "player_type": 2,
+      "player_type_name": "umpire",
+      "popular_name": "",
+      "portrait_alt_id": "1",
+      "portrait_object_id": 953905,
+      "status_id": 3,
+      "team_abbreviation": "ENG",
+      "team_id": 1,
+      "team_name": "England",
+      "team_short_name": "England"
+    },
+    {
+      "age_days": 30,
+      "age_years": 60,
+      "alpha_name": "TUCKER,RJ",
+      "batting_hand": "left-hand batter",
+      "bowling_hand": "right-arm bowler",
+      "bowling_pacespin": "pace bowler",
+      "card_long": "RJ Tucker",
+      "card_qualifier": "",
+      "card_short": "RJ Tucker",
+      "dob": "1964-08-28",
+      "image_id": null,
+      "known_as": "Rod Tucker",
+      "match_player_id": 3056779,
+      "mobile_name": "Tucker",
+      "object_id": 7986,
+      "player_id": "2756",
+      "player_name_id": 3656,
+      "player_type": 3,
+      "player_type_name": "tv umpire",
+      "popular_name": "Tucker",
+      "portrait_alt_id": "1",
+      "portrait_object_id": 953885,
+      "status_id": 3,
+      "team_abbreviation": "AUS",
+      "team_id": 2,
+      "team_name": "Australia",
+      "team_short_name": "Australia"
+    },
+    {
+      "age_days": 13,
+      "age_years": 66,
+      "alpha_name": "CROWE,JJ",
+      "batting_hand": "right-hand batter",
+      "bowling_hand": "right-arm bowler",
+      "bowling_pacespin": "mixture/unknown",
+      "card_long": "JJ Crowe",
+      "card_qualifier": "",
+      "card_short": "JJ Crowe",
+      "dob": "1958-09-14",
+      "image_id": 321233,
+      "known_as": "Jeff Crowe",
+      "match_player_id": 3056780,
+      "mobile_name": "Crowe",
+      "object_id": 36620,
+      "player_id": "1698",
+      "player_name_id": 48153,
+      "player_type": 4,
+      "player_type_name": "referee",
+      "popular_name": "Crowe",
+      "portrait_alt_id": "1",
+      "portrait_object_id": 1262802,
+      "status_id": 3,
+      "team_abbreviation": "NZ",
+      "team_id": 5,
+      "team_name": "New Zealand",
+      "team_short_name": "New Zealand"
+    },
+    {
+      "age_days": 16,
+      "age_years": 53,
+      "alpha_name": "SHARMA,VK",
+      "batting_hand": "right-hand batter",
+      "bowling_hand": "unknown arm",
+      "bowling_pacespin": "mixture/unknown",
+      "card_long": "VK Sharma",
+      "card_qualifier": "",
+      "card_short": "VK Sharma",
+      "dob": "1971-09-11",
+      "image_id": null,
+      "known_as": "Virender Sharma",
+      "match_player_id": 3056781,
+      "mobile_name": "Sharma",
+      "object_id": 33933,
+      "player_id": "15827",
+      "player_name_id": 27412,
+      "player_type": 7,
+      "player_type_name": "reserve umpire",
+      "popular_name": "Sharma",
+      "portrait_alt_id": "player",
+      "portrait_object_id": 33932,
+      "status_id": 3,
+      "team_abbreviation": "IND",
+      "team_id": 6,
+      "team_name": "India",
+      "team_short_name": "India"
+    }
+  ],
+  "other_scores": {
+    "domestic": [
+      {
+        "object_id": 1450674,
+        "result": "Maiwand won by 29 runs",
+        "start_time": "10:00&nbsp;local | 05:30&nbsp;GMT | 06:30&nbsp;BST",
+        "team1_desc": " 173 &amp; 158",
+        "team1_name": "MAC",
+        "team2_desc": " 146 &amp; 156 (37&nbsp;ov)",
+        "team2_name": "HIS",
+        "url": "/ci/engine/match/1450674.html"
+      },
+      {
+        "object_id": 1450675,
+        "start_time": "10:00&nbsp;local | 05:30&nbsp;GMT | 06:30&nbsp;BST",
+        "team1_desc": " 191 &amp; 67/2 (11&nbsp;ov)",
+        "team1_name": "MPS",
+        "team2_desc": " 668/9d",
+        "team2_name": "PAL",
+        "url": "/ci/engine/match/1450675.html"
+      }
+    ],
+    "international": [
+      {
+        "object_id": 1439892,
+        "start_time": "09:30&nbsp;local | 04:00&nbsp;GMT | 05:00&nbsp;BST",
+        "team1_desc": " 233",
+        "team1_name": "BAN",
+        "team2_desc": " 285/9d (34.4&nbsp;ov)",
+        "team2_name": "IND",
+        "url": "/ci/engine/match/1439892.html"
+      },
+      {
+        "object_id": 1450818,
+        "start_time": "14:00&nbsp;local | 12:00&nbsp;GMT | 13:00&nbsp;BST",
+        "team1_desc": "",
+        "team1_name": "UAE",
+        "team2_desc": "",
+        "team2_name": "USA",
+        "url": "/ci/engine/match/1450818.html"
+      },
+      {
+        "object_id": 1450825,
+        "start_time": "12:00&nbsp;local | 16:00&nbsp;GMT | 17:00&nbsp;BST",
+        "team1_desc": "",
+        "team1_name": "CAN",
+        "team2_desc": "",
+        "team2_name": "OMA",
+        "url": "/ci/engine/match/1450825.html"
+      }
+    ],
+    "others": [
+      {
+        "object_id": 1450217,
+        "start_time": "09:30&nbsp;local | 04:00&nbsp;GMT | 05:00&nbsp;BST",
+        "team1_desc": " 293 (71.4&nbsp;ov)",
+        "team1_name": "AUS19",
+        "team2_desc": "",
+        "team2_name": "IND19",
+        "url": "/ci/engine/match/1450217.html"
+      },
+      {
+        "object_id": 1432999,
+        "start_time": "18:00&nbsp;local | 14:00&nbsp;GMT | 15:00&nbsp;BST",
+        "team1_desc": "",
+        "team1_name": "BAN-W",
+        "team2_desc": "",
+        "team2_name": "PAK-W",
+        "url": "/ci/engine/match/1432999.html"
+      },
+      {
+        "object_id": 1432998,
+        "start_time": "18:00&nbsp;local | 14:00&nbsp;GMT | 15:00&nbsp;BST",
+        "team1_desc": "",
+        "team1_name": "SCO-W",
+        "team2_desc": "",
+        "team2_name": "SL-W",
+        "url": "/ci/engine/match/1432998.html"
+      }
+    ]
+  },
+  "score_source": "1",
+  "series": [
+    {
+      "class_id": 1,
+      "class_name": "Tests",
+      "content_id": 15144,
+      "core_recreation_id": 19430,
+      "date": "Jun 2023 - Dec 2025",
+      "end_date": "31 Dec 2025",
+      "end_date_raw": "2025-12-31",
+      "final_type_name": "preliminary matches",
+      "group_title": "",
+      "major_trophy": 1,
+      "match_number": 2,
+      "match_title": "2nd Test",
+      "match_type_name": null,
+      "multiformat_pointstable": "N",
+      "number_of_hosts": 9,
+      "number_of_matches": 1,
+      "number_of_teams": 9,
+      "object_id": 1345943,
+      "points": null,
+      "primary_series": "N",
+      "replayed_date": null,
+      "schedule_note": "",
+      "score_module_position": 0,
+      "season": "2023-2025",
+      "series_abbreviation": null,
+      "series_category_id": 1,
+      "series_category_name": "competition",
+      "series_filename": null,
+      "series_lead_abandoned": 0,
+      "series_lead_cancelled": 0,
+      "series_lead_how_won_name": null,
+      "series_lead_lost": 0,
+      "series_lead_result_name": null,
+      "series_lead_team_name": null,
+      "series_lead_total": 0,
+      "series_lead_type_name": null,
+      "series_lead_won": 0,
+      "series_long_description": "",
+      "series_name": "ICC World Test Championship",
+      "series_short_name": "ICC World Test Championship",
+      "series_status": "current",
+      "series_type_id": 3,
+      "series_type_name": "tournament",
+      "short_alternate_name": "WTC",
+      "site_id": 1,
+      "slug": "icc-world-test-championship",
+      "start_date": "16 Jun 2023",
+      "start_date_raw": "2023-06-16",
+      "team1_points": null,
+      "team2_points": null,
+      "teams": [
+        {
+          "host_team": 1,
+          "object_id": 2,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 6,
+          "team_abbreviation": "AUS",
+          "team_filename": "AUS",
+          "team_id": 2,
+          "team_name": "Australia",
+          "team_short_name": "Australia",
+          "url_component": "australia"
+        },
+        {
+          "host_team": 1,
+          "object_id": 25,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 8,
+          "team_abbreviation": "BAN",
+          "team_filename": "BDESH",
+          "team_id": 25,
+          "team_name": "Bangladesh",
+          "team_short_name": "Bangladesh",
+          "url_component": "bangladesh"
+        },
+        {
+          "host_team": 1,
+          "object_id": 1,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 10,
+          "team_abbreviation": "ENG",
+          "team_filename": "ENG",
+          "team_id": 1,
+          "team_name": "England",
+          "team_short_name": "England",
+          "url_component": "england"
+        },
+        {
+          "host_team": 1,
+          "object_id": 6,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 12,
+          "team_abbreviation": "IND",
+          "team_filename": "IND",
+          "team_id": 6,
+          "team_name": "India",
+          "team_short_name": "India",
+          "url_component": "india"
+        },
+        {
+          "host_team": 1,
+          "object_id": 5,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 16,
+          "team_abbreviation": "NZ",
+          "team_filename": "NZ",
+          "team_id": 5,
+          "team_name": "New Zealand",
+          "team_short_name": "New Zealand",
+          "url_component": "newzealand"
+        },
+        {
+          "host_team": 1,
+          "object_id": 7,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 18,
+          "team_abbreviation": "PAK",
+          "team_filename": "PAK",
+          "team_id": 7,
+          "team_name": "Pakistan",
+          "team_short_name": "Pakistan",
+          "url_component": "pakistan"
+        },
+        {
+          "host_team": 1,
+          "object_id": 3,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 20,
+          "team_abbreviation": "SA",
+          "team_filename": "RSA",
+          "team_id": 3,
+          "team_name": "South Africa",
+          "team_short_name": "South Africa",
+          "url_component": "southafrica"
+        },
+        {
+          "host_team": 1,
+          "object_id": 8,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 22,
+          "team_abbreviation": "SL",
+          "team_filename": "SL",
+          "team_id": 8,
+          "team_name": "Sri Lanka",
+          "team_short_name": "Sri Lanka",
+          "url_component": "srilanka"
+        },
+        {
+          "host_team": 1,
+          "object_id": 4,
+          "primary_team": 1,
+          "series_id": 15144,
+          "series_result_name": null,
+          "site_id": 24,
+          "team_abbreviation": "WI",
+          "team_filename": "WI",
+          "team_id": 4,
+          "team_name": "West Indies",
+          "team_short_name": "West Indies",
+          "url_component": "westindies"
+        }
+      ],
+      "tiebreaker_id": 0,
+      "tiebreaker_name": null,
+      "trophy_abbreviation": "ICCWTC",
+      "trophy_class_id": 0,
+      "trophy_country_id": 0,
+      "trophy_id": 804,
+      "trophy_name": "ICC World Test Championship",
+      "trophy_short_name": "ICC World Test Champ",
+      "url_component": "ci"
+    },
+    {
+      "class_id": 1,
+      "class_name": "Tests",
+      "content_id": 16432,
+      "core_recreation_id": 22711,
+      "date": "Sep-Oct 2024",
+      "end_date": "1 Oct 2024",
+      "end_date_raw": "2024-10-01",
+      "final_type_name": "preliminary matches",
+      "group_title": "",
+      "major_trophy": null,
+      "match_number": 2,
+      "match_title": "2nd Test",
+      "match_type_name": null,
+      "multiformat_pointstable": "N",
+      "number_of_hosts": 1,
+      "number_of_matches": 1,
+      "number_of_teams": 2,
+      "object_id": 1439845,
+      "points": null,
+      "primary_series": "N",
+      "replayed_date": null,
+      "schedule_note": "",
+      "score_module_position": 0,
+      "season": "2024/25",
+      "series_abbreviation": null,
+      "series_category_id": 1,
+      "series_category_name": "competition",
+      "series_filename": null,
+      "series_lead_abandoned": 0,
+      "series_lead_cancelled": 0,
+      "series_lead_how_won_name": null,
+      "series_lead_lost": 0,
+      "series_lead_result_name": null,
+      "series_lead_team_name": null,
+      "series_lead_total": 0,
+      "series_lead_type_name": null,
+      "series_lead_won": 0,
+      "series_long_description": "Bangladesh in India",
+      "series_name": "Bangladesh in India Test Series",
+      "series_short_name": "Bangladesh in India Test",
+      "series_status": "current",
+      "series_type_id": 1,
+      "series_type_name": "series",
+      "short_alternate_name": "",
+      "site_id": 1,
+      "slug": "bangladesh-in-india-test-2024-25",
+      "start_date": "19 Sep 2024",
+      "start_date_raw": "2024-09-19",
+      "team1_points": null,
+      "team2_points": null,
+      "teams": [
+        {
+          "host_team": 0,
+          "object_id": 25,
+          "primary_team": 1,
+          "series_id": 16432,
+          "series_result_name": null,
+          "site_id": 8,
+          "team_abbreviation": "BAN",
+          "team_filename": "BDESH",
+          "team_id": 25,
+          "team_name": "Bangladesh",
+          "team_short_name": "Bangladesh",
+          "url_component": "bangladesh"
+        },
+        {
+          "host_team": 1,
+          "object_id": 6,
+          "primary_team": 1,
+          "series_id": 16432,
+          "series_result_name": null,
+          "site_id": 12,
+          "team_abbreviation": "IND",
+          "team_filename": "IND",
+          "team_id": 6,
+          "team_name": "India",
+          "team_short_name": "India",
+          "url_component": "india"
+        }
+      ],
+      "tiebreaker_id": 0,
+      "tiebreaker_name": null,
+      "trophy_abbreviation": null,
+      "trophy_class_id": null,
+      "trophy_country_id": null,
+      "trophy_id": 0,
+      "trophy_name": null,
+      "trophy_short_name": null,
+      "url_component": "ci"
+    },
+    {
+      "class_id": 0,
+      "class_name": null,
+      "content_id": 16431,
+      "core_recreation_id": 22712,
+      "date": "Sep-Oct 2024",
+      "end_date": "12 Oct 2024",
+      "end_date_raw": "2024-10-12",
+      "final_type_name": null,
+      "group_title": "",
+      "major_trophy": null,
+      "match_number": null,
+      "match_title": "2nd Test",
+      "match_type_name": null,
+      "multiformat_pointstable": "N",
+      "number_of_hosts": null,
+      "number_of_matches": 1,
+      "number_of_teams": null,
+      "object_id": 1439844,
+      "points": 0,
+      "primary_series": "Y",
+      "replayed_date": null,
+      "schedule_note": "",
+      "score_module_position": 0,
+      "season": "2024/25",
+      "series_abbreviation": null,
+      "series_category_id": 3,
+      "series_category_name": "tour",
+      "series_filename": null,
+      "series_lead_abandoned": 0,
+      "series_lead_cancelled": 0,
+      "series_lead_how_won_name": null,
+      "series_lead_lost": 0,
+      "series_lead_result_name": null,
+      "series_lead_team_name": null,
+      "series_lead_total": 0,
+      "series_lead_type_name": null,
+      "series_lead_won": 0,
+      "series_long_description": "",
+      "series_name": "Bangladesh tour of India",
+      "series_short_name": "Bangladesh in India",
+      "series_status": "current",
+      "series_type_id": 4,
+      "series_type_name": "tour",
+      "short_alternate_name": "IND vs BDESH",
+      "site_id": 1,
+      "slug": "bangladesh-in-india-2024-25",
+      "start_date": "19 Sep 2024",
+      "start_date_raw": "2024-09-19",
+      "team1_points": "0.000",
+      "team2_points": "0.000",
+      "teams": [
+        {
+          "host_team": 0,
+          "object_id": 25,
+          "primary_team": 1,
+          "series_id": 16431,
+          "series_result_name": null,
+          "site_id": 8,
+          "team_abbreviation": "BAN",
+          "team_filename": "BDESH",
+          "team_id": 25,
+          "team_name": "Bangladesh",
+          "team_short_name": "Bangladesh",
+          "url_component": "bangladesh"
+        },
+        {
+          "host_team": 1,
+          "object_id": 6,
+          "primary_team": 0,
+          "series_id": 16431,
+          "series_result_name": null,
+          "site_id": 12,
+          "team_abbreviation": "IND",
+          "team_filename": "IND",
+          "team_id": 6,
+          "team_name": "India",
+          "team_short_name": "India",
+          "url_component": "india"
+        }
+      ],
+      "tiebreaker_id": 0,
+      "tiebreaker_name": null,
+      "trophy_abbreviation": null,
+      "trophy_class_id": null,
+      "trophy_country_id": null,
+      "trophy_id": 0,
+      "trophy_name": null,
+      "trophy_short_name": null,
+      "url_component": "ci"
+    }
+  ],
+  "substitute": [],
+  "team": [
+    {
+      "batsmen_in_side": 11,
+      "content_id": 6,
+      "country_id": 6,
+      "fielders_in_side": 11,
+      "image_id": 381895,
+      "logo_alt_id": "",
+      "logo_espncdn": "Y",
+      "logo_height": 500,
+      "logo_image_height": 500,
+      "logo_image_path": "/db/PICTURES/CMS/381800/381895.png",
+      "logo_image_width": 500,
+      "logo_object_id": 1436347,
+      "logo_path": "/db/PICTURES/CMS/381800/381895.png",
+      "logo_width": 500,
+      "object_id": 6,
+      "player": [
+        {
+          "age_days": 274,
+          "age_years": 22,
+          "alpha_name": "JAISWAL,YBK",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "lb",
+          "bowling_style_long": "legbreak ",
+          "captain": 0,
+          "card_long": "YBK Jaiswal",
+          "card_qualifier": "",
+          "card_short": "Jaiswal",
+          "dob": "2001-12-28",
+          "image_id": 340309,
+          "keeper": 0,
+          "known_as": "Yashasvi Jaiswal",
+          "match_player_id": 3056118,
+          "mobile_name": "Jaiswal",
+          "object_id": 1151278,
+          "player_id": "102743",
+          "player_name_id": 103110,
+          "player_primary_role": "opening batter",
+          "player_style_id": 1,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Jaiswal",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1318029,
+          "status_id": 3
+        },
+        {
+          "age_days": 150,
+          "age_years": 37,
+          "alpha_name": "SHARMA,RG",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "ob",
+          "bowling_style_long": "right-arm offbreak ",
+          "captain": 1,
+          "card_long": "RG Sharma",
+          "card_qualifier": "",
+          "card_short": "Sharma",
+          "dob": "1987-04-30",
+          "image_id": 385819,
+          "keeper": 0,
+          "known_as": "Rohit Sharma",
+          "match_player_id": 3056110,
+          "mobile_name": "Rohit Sharma",
+          "object_id": 34102,
+          "player_id": "48405",
+          "player_name_id": 27545,
+          "player_primary_role": "top-order batter",
+          "player_style_id": 2,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Rohit",
+          "portrait_alt_id": "2",
+          "portrait_object_id": 1446536,
+          "status_id": 3
+        },
+        {
+          "age_days": 19,
+          "age_years": 25,
+          "alpha_name": "SHUBMAN_GILL",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "ob",
+          "bowling_style_long": "right-arm offbreak ",
+          "captain": 0,
+          "card_long": "Shubman Gill",
+          "card_qualifier": "",
+          "card_short": "Shubman Gill",
+          "dob": "1999-09-08",
+          "image_id": 322697,
+          "keeper": 0,
+          "known_as": "Shubman Gill",
+          "match_player_id": 3056117,
+          "mobile_name": "Gill",
+          "object_id": 1070173,
+          "player_id": "95316",
+          "player_name_id": 95682,
+          "player_primary_role": "opening batter",
+          "player_style_id": 1,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Gill",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1265616,
+          "status_id": 3
+        },
+        {
+          "age_days": 359,
+          "age_years": 26,
+          "alpha_name": "PANT,RR",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "unknown arm",
+          "bowling_pacespin": "mixture/unknown",
+          "bowling_style": null,
+          "bowling_style_long": null,
+          "captain": 0,
+          "card_long": "RR Pant",
+          "card_qualifier": "",
+          "card_short": "Pant",
+          "dob": "1997-10-04",
+          "image_id": 323036,
+          "keeper": 1,
+          "known_as": "Rishabh Pant",
+          "match_player_id": 3056115,
+          "mobile_name": "Pant",
+          "object_id": 931581,
+          "player_id": "86165",
+          "player_name_id": 86529,
+          "player_primary_role": "wicketkeeper batter",
+          "player_style_id": 7,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Pant",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1266194,
+          "status_id": 3
+        },
+        {
+          "age_days": 327,
+          "age_years": 35,
+          "alpha_name": "KOHLI,V",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "pace bowler",
+          "bowling_style": "rm",
+          "bowling_style_long": "right-arm medium ",
+          "captain": 0,
+          "card_long": "V Kohli",
+          "card_qualifier": "",
+          "card_short": "Kohli",
+          "dob": "1988-11-05",
+          "image_id": 316605,
+          "keeper": 0,
+          "known_as": "Virat Kohli",
+          "match_player_id": 3056112,
+          "mobile_name": "Kohli",
+          "object_id": 253802,
+          "player_id": "49752",
+          "player_name_id": 50008,
+          "player_primary_role": "top-order batter",
+          "player_style_id": 2,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Kohli",
+          "portrait_alt_id": "3",
+          "portrait_object_id": 1251236,
+          "status_id": 3
+        },
+        {
+          "age_days": 162,
+          "age_years": 32,
+          "alpha_name": "RAHUL,KL",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "unknown arm",
+          "bowling_pacespin": "mixture/unknown",
+          "bowling_style": null,
+          "bowling_style_long": null,
+          "captain": 0,
+          "card_long": "KL Rahul",
+          "card_qualifier": "",
+          "card_short": "Rahul",
+          "dob": "1992-04-18",
+          "image_id": 319942,
+          "keeper": 0,
+          "known_as": "KL Rahul",
+          "match_player_id": 3056113,
+          "mobile_name": "Rahul",
+          "object_id": 422108,
+          "player_id": "60530",
+          "player_name_id": 60845,
+          "player_primary_role": "wicketkeeper batter",
+          "player_style_id": 7,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Rahul",
+          "portrait_alt_id": "3",
+          "portrait_object_id": 1260221,
+          "status_id": 3
+        },
+        {
+          "age_days": 296,
+          "age_years": 35,
+          "alpha_name": "JADEJA,RA",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "left-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "sla",
+          "bowling_style_long": "slow left-arm orthodox ",
+          "captain": 0,
+          "card_long": "RA Jadeja",
+          "card_qualifier": "",
+          "card_short": "Jadeja",
+          "dob": "1988-12-06",
+          "image_id": 316600,
+          "keeper": 0,
+          "known_as": "Ravindra Jadeja",
+          "match_player_id": 3056111,
+          "mobile_name": "Jadeja",
+          "object_id": 234675,
+          "player_id": "49247",
+          "player_name_id": 49412,
+          "player_primary_role": "allrounder",
+          "player_style_id": 5,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Jadeja",
+          "portrait_alt_id": "2",
+          "portrait_object_id": 1251230,
+          "status_id": 3
+        },
+        {
+          "age_days": 10,
+          "age_years": 38,
+          "alpha_name": "ASHWIN,R",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "ob",
+          "bowling_style_long": "right-arm offbreak ",
+          "captain": 0,
+          "card_long": "R Ashwin",
+          "card_qualifier": "",
+          "card_short": "Ashwin",
+          "dob": "1986-09-17",
+          "image_id": 316521,
+          "keeper": 0,
+          "known_as": "Ravichandran Ashwin",
+          "match_player_id": 3056109,
+          "mobile_name": "Ashwin",
+          "object_id": 26421,
+          "player_id": "12894",
+          "player_name_id": 20775,
+          "player_primary_role": "bowling allrounder",
+          "player_style_id": 11,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Ashwin",
+          "portrait_alt_id": "2",
+          "portrait_object_id": 1251150,
+          "status_id": 3
+        },
+        {
+          "age_days": 287,
+          "age_years": 27,
+          "alpha_name": "AKASH_DEEP",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "pace bowler",
+          "bowling_style": "rfm",
+          "bowling_style_long": "right-arm fast-medium ",
+          "captain": 0,
+          "card_long": "Akash Deep",
+          "card_qualifier": "",
+          "card_short": "Akash Deep",
+          "dob": "1996-12-15",
+          "image_id": 340311,
+          "keeper": 0,
+          "known_as": "Akash Deep",
+          "match_player_id": 3056119,
+          "mobile_name": "Akash Deep",
+          "object_id": 1176959,
+          "player_id": "104922",
+          "player_name_id": 105296,
+          "player_primary_role": "bowler",
+          "player_style_id": 4,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Akash Deep",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1365031,
+          "status_id": 3
+        },
+        {
+          "age_days": 296,
+          "age_years": 30,
+          "alpha_name": "BUMRAH,JJ",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "pace bowler",
+          "bowling_style": "rf",
+          "bowling_style_long": "right-arm fast ",
+          "captain": 0,
+          "card_long": "JJ Bumrah",
+          "card_qualifier": "",
+          "card_short": "Bumrah",
+          "dob": "1993-12-06",
+          "image_id": 319940,
+          "keeper": 0,
+          "known_as": "Jasprit Bumrah",
+          "match_player_id": 3056114,
+          "mobile_name": "Bumrah",
+          "object_id": 625383,
+          "player_id": "70640",
+          "player_name_id": 70976,
+          "player_primary_role": "bowler",
+          "player_style_id": 4,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Bumrah",
+          "portrait_alt_id": "2",
+          "portrait_object_id": 1260219,
+          "status_id": 3
+        },
+        {
+          "age_days": 198,
+          "age_years": 30,
+          "alpha_name": "MOHAMMED_SIRAJ",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "pace bowler",
+          "bowling_style": "rf",
+          "bowling_style_long": "right-arm fast ",
+          "captain": 0,
+          "card_long": "Mohammed Siraj",
+          "card_qualifier": "",
+          "card_short": "Mohammed Siraj",
+          "dob": "1994-03-13",
+          "image_id": 322611,
+          "keeper": 0,
+          "known_as": "Mohammed Siraj",
+          "match_player_id": 3056116,
+          "mobile_name": "Siraj",
+          "object_id": 940973,
+          "player_id": "87477",
+          "player_name_id": 87843,
+          "player_primary_role": "bowler",
+          "player_style_id": 4,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Siraj",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1265471,
+          "status_id": 3
+        }
+      ],
+      "players_in_side": 11,
+      "site_id": 12,
+      "team_abbreviation": "IND",
+      "team_filename": "IND",
+      "team_general_name": "India",
+      "team_id": "6",
+      "team_name": "India",
+      "team_short_name": "India",
+      "url_component": "india"
+    },
+    {
+      "batsmen_in_side": 11,
+      "content_id": 25,
+      "country_id": 25,
+      "fielders_in_side": 11,
+      "image_id": 341456,
+      "logo_alt_id": "",
+      "logo_espncdn": "Y",
+      "logo_height": 500,
+      "logo_image_height": 500,
+      "logo_image_path": "/db/PICTURES/CMS/341400/341456.png",
+      "logo_image_width": 500,
+      "logo_object_id": 1321180,
+      "logo_path": "/db/PICTURES/CMS/341400/341456.png",
+      "logo_width": 500,
+      "object_id": 25,
+      "player": [
+        {
+          "age_days": 239,
+          "age_years": 26,
+          "alpha_name": "ZAKIR_HASAN",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "unknown arm",
+          "bowling_pacespin": "mixture/unknown",
+          "bowling_style": null,
+          "bowling_style_long": null,
+          "captain": 0,
+          "card_long": "Zakir Hasan",
+          "card_qualifier": "",
+          "card_short": "Zakir Hasan",
+          "dob": "1998-02-01",
+          "image_id": null,
+          "keeper": 0,
+          "known_as": "Zakir Hasan",
+          "match_player_id": 3056128,
+          "mobile_name": "",
+          "object_id": 697059,
+          "player_id": "74117",
+          "player_name_id": 74459,
+          "player_primary_role": "wicketkeeper batter",
+          "player_style_id": 7,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1409348,
+          "status_id": 3
+        },
+        {
+          "age_days": 132,
+          "age_years": 29,
+          "alpha_name": "SHADMAN_ISLAM",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "left-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "sla",
+          "bowling_style_long": "slow left-arm orthodox ",
+          "captain": 0,
+          "card_long": "Shadman Islam",
+          "card_qualifier": "",
+          "card_short": "Shadman Islam",
+          "dob": "1995-05-18",
+          "image_id": 323171,
+          "keeper": 0,
+          "known_as": "Shadman Islam",
+          "match_player_id": 3056125,
+          "mobile_name": "Shadman",
+          "object_id": 629057,
+          "player_id": "70871",
+          "player_name_id": 71209,
+          "player_primary_role": "opening batter",
+          "player_style_id": 1,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Shadman",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1266419,
+          "status_id": 3
+        },
+        {
+          "age_days": 364,
+          "age_years": 32,
+          "alpha_name": "MOMINUL_HAQUE",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "left-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "sla",
+          "bowling_style_long": "slow left-arm orthodox ",
+          "captain": 0,
+          "card_long": "Mominul Haque",
+          "card_qualifier": "",
+          "card_short": "Mominul Haque",
+          "dob": "1991-09-29",
+          "image_id": 316666,
+          "keeper": 0,
+          "known_as": "Mominul Haque",
+          "match_player_id": 3056122,
+          "mobile_name": "Mominul",
+          "object_id": 373696,
+          "player_id": "58225",
+          "player_name_id": 58533,
+          "player_primary_role": "middle-order batter",
+          "player_style_id": 3,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Mominul",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1251299,
+          "status_id": 3
+        },
+        {
+          "age_days": 33,
+          "age_years": 26,
+          "alpha_name": "NAZMUL_HOSSAIN_SHANTO",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "ob",
+          "bowling_style_long": "right-arm offbreak ",
+          "captain": 1,
+          "card_long": "Najmul Hossain Shanto",
+          "card_qualifier": "",
+          "card_short": "Najmul Hossain Shanto",
+          "dob": "1998-08-25",
+          "image_id": 323155,
+          "keeper": 0,
+          "known_as": "Najmul Hossain Shanto",
+          "match_player_id": 3056126,
+          "mobile_name": "Shanto",
+          "object_id": 629058,
+          "player_id": "70872",
+          "player_name_id": 71210,
+          "player_primary_role": "top-order batter",
+          "player_style_id": 2,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Shanto",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1266399,
+          "status_id": 3
+        },
+        {
+          "age_days": 141,
+          "age_years": 37,
+          "alpha_name": "MUSHFIQUR_RAHIM",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "unknown arm",
+          "bowling_pacespin": "mixture/unknown",
+          "bowling_style": null,
+          "bowling_style_long": null,
+          "captain": 0,
+          "card_long": "Mushfiqur Rahim",
+          "card_qualifier": "",
+          "card_short": "Mushfiqur Rahim",
+          "dob": "1987-05-09",
+          "image_id": 385790,
+          "keeper": 0,
+          "known_as": "Mushfiqur Rahim",
+          "match_player_id": 3056120,
+          "mobile_name": "Mushfiqur",
+          "object_id": 56029,
+          "player_id": "47986",
+          "player_name_id": 48238,
+          "player_primary_role": "wicketkeeper batter",
+          "player_style_id": 7,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Mushfiqur",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1446432,
+          "status_id": 3
+        },
+        {
+          "age_days": 350,
+          "age_years": 29,
+          "alpha_name": "LITTON_DAS",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "ob",
+          "bowling_style_long": "right-arm offbreak ",
+          "captain": 0,
+          "card_long": "Litton Das",
+          "card_qualifier": "",
+          "card_short": "Litton Das",
+          "dob": "1994-10-13",
+          "image_id": 319727,
+          "keeper": 1,
+          "known_as": "Litton Das",
+          "match_player_id": 3056124,
+          "mobile_name": "Litton Das",
+          "object_id": 536936,
+          "player_id": "66691",
+          "player_name_id": 67013,
+          "player_primary_role": "wicketkeeper batter",
+          "player_style_id": 7,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Liton",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1259727,
+          "status_id": 3
+        },
+        {
+          "age_days": 187,
+          "age_years": 37,
+          "alpha_name": "SHAQIB_AL_HASAN",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "left-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "sla",
+          "bowling_style_long": "slow left-arm orthodox ",
+          "captain": 0,
+          "card_long": "Shakib Al Hasan",
+          "card_qualifier": "",
+          "card_short": "Shakib Al Hasan",
+          "dob": "1987-03-24",
+          "image_id": 316581,
+          "keeper": 0,
+          "known_as": "Shakib Al Hasan",
+          "match_player_id": 3056121,
+          "mobile_name": "Shakib",
+          "object_id": 56143,
+          "player_id": "48277",
+          "player_name_id": 47649,
+          "player_primary_role": "allrounder",
+          "player_style_id": 5,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Shakib",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1251210,
+          "status_id": 3
+        },
+        {
+          "age_days": 338,
+          "age_years": 26,
+          "alpha_name": "MEHIDY_HASAN_MIRAZ",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "ob",
+          "bowling_style_long": "right-arm offbreak ",
+          "captain": 0,
+          "card_long": "Mehidy Hasan Miraz",
+          "card_qualifier": "",
+          "card_short": "Mehidy Hasan Miraz",
+          "dob": "1997-10-25",
+          "image_id": 319728,
+          "keeper": 0,
+          "known_as": "Mehidy Hasan Miraz",
+          "match_player_id": 3056127,
+          "mobile_name": "Mehidy Hasan Miraz",
+          "object_id": 629063,
+          "player_id": "70877",
+          "player_name_id": 71215,
+          "player_primary_role": "allrounder",
+          "player_style_id": 5,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Mehidy",
+          "portrait_alt_id": "3",
+          "portrait_object_id": 1259728,
+          "status_id": 3
+        },
+        {
+          "age_days": 233,
+          "age_years": 32,
+          "alpha_name": "TAIJUL_ISLAM",
+          "batting_hand": "left-hand batter",
+          "batting_style": "lhb",
+          "batting_style_long": "left-hand bat",
+          "bowling_hand": "left-arm bowler",
+          "bowling_pacespin": "spin bowler",
+          "bowling_style": "sla",
+          "bowling_style_long": "slow left-arm orthodox ",
+          "captain": 0,
+          "card_long": "Taijul Islam",
+          "card_qualifier": "",
+          "card_short": "Taijul Islam",
+          "dob": "1992-02-07",
+          "image_id": 316675,
+          "keeper": 0,
+          "known_as": "Taijul Islam",
+          "match_player_id": 3056123,
+          "mobile_name": "Taijul",
+          "object_id": 401057,
+          "player_id": "59679",
+          "player_name_id": 59988,
+          "player_primary_role": "bowler",
+          "player_style_id": 4,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Taijul",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1251308,
+          "status_id": 3
+        },
+        {
+          "age_days": 351,
+          "age_years": 24,
+          "alpha_name": "HASAN_MAHMUD",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "pace bowler",
+          "bowling_style": "rfm",
+          "bowling_style_long": "right-arm fast-medium ",
+          "captain": 0,
+          "card_long": "Hasan Mahmud",
+          "card_qualifier": "",
+          "card_short": "Hasan Mahmud",
+          "dob": "1999-10-12",
+          "image_id": 323172,
+          "keeper": 0,
+          "known_as": "Hasan Mahmud",
+          "match_player_id": 3056129,
+          "mobile_name": "",
+          "object_id": 926629,
+          "player_id": "85693",
+          "player_name_id": 86057,
+          "player_primary_role": "bowler",
+          "player_style_id": 4,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Mahmud",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1266420,
+          "status_id": 3
+        },
+        {
+          "age_days": 7,
+          "age_years": 32,
+          "alpha_name": "SYED_KHALED_AHMED",
+          "batting_hand": "right-hand batter",
+          "batting_style": "rhb",
+          "batting_style_long": "right-hand bat",
+          "bowling_hand": "right-arm bowler",
+          "bowling_pacespin": "pace bowler",
+          "bowling_style": "rmf",
+          "bowling_style_long": "right-arm medium-fast ",
+          "captain": 0,
+          "card_long": "Khaled Ahmed",
+          "card_qualifier": "",
+          "card_short": "Khaled Ahmed",
+          "dob": "1992-09-20",
+          "image_id": 349342,
+          "keeper": 0,
+          "known_as": "Khaled Ahmed",
+          "match_player_id": 3056130,
+          "mobile_name": "Khaled",
+          "object_id": 927619,
+          "player_id": "85937",
+          "player_name_id": 86301,
+          "player_primary_role": "bowler",
+          "player_style_id": 4,
+          "player_type": 1,
+          "player_type_name": "player",
+          "popular_name": "Khaled",
+          "portrait_alt_id": "1",
+          "portrait_object_id": 1345213,
+          "status_id": 3
+        }
+      ],
+      "players_in_side": 11,
+      "site_id": 8,
+      "team_abbreviation": "BAN",
+      "team_filename": "BDESH",
+      "team_general_name": "Bangladesh",
+      "team_id": "25",
+      "team_name": "Bangladesh",
+      "team_short_name": "Bangladesh",
+      "url_component": "bangladesh"
+    }
+  ],
+  "tiebreaker": [],
+  "weather": {
+    "forecast": []
+  }
+}
